@@ -1,0 +1,575 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		743150ED1F4253BE0012C9EC /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = 743150EC1F4253BE0012C9EC /* Currency.m */; };
+		743521DC1F3F2A7900E1B3F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 743521DB1F3F2A7900E1B3F5 /* main.m */; };
+		743521DF1F3F2A7900E1B3F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 743521DE1F3F2A7900E1B3F5 /* AppDelegate.m */; };
+		743521E51F3F2A7900E1B3F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743521E31F3F2A7900E1B3F5 /* Main.storyboard */; };
+		743521E71F3F2A7900E1B3F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 743521E61F3F2A7900E1B3F5 /* Assets.xcassets */; };
+		743521EA1F3F2A7900E1B3F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743521E81F3F2A7900E1B3F5 /* LaunchScreen.storyboard */; };
+		743521F51F3F2A7A00E1B3F5 /* RevolutTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 743521F41F3F2A7A00E1B3F5 /* RevolutTestTests.m */; };
+		743522041F3F8CE800E1B3F5 /* AppSettingsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 743522031F3F8CE800E1B3F5 /* AppSettingsService.m */; };
+		743522071F3F8D0100E1B3F5 /* CurrencyService.m in Sources */ = {isa = PBXBuildFile; fileRef = 743522061F3F8D0100E1B3F5 /* CurrencyService.m */; };
+		7435220B1F40667C00E1B3F5 /* CurrencyExchangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7435220A1F40667C00E1B3F5 /* CurrencyExchangeViewController.m */; };
+		743522131F40D3B800E1B3F5 /* CurrencyPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 743522121F40D3B800E1B3F5 /* CurrencyPageViewController.m */; };
+		749176C81F4B8C800014F480 /* KeyValueObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 749176C71F4B8C800014F480 /* KeyValueObserver.m */; };
+		74F64FCF1F441F3D0001D360 /* ExchangeMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F64FCE1F441F3D0001D360 /* ExchangeMediator.m */; };
+		74F64FD31F44B5800001D360 /* CurrencyFromPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F64FD21F44B5800001D360 /* CurrencyFromPageViewController.m */; };
+		74F64FD61F44B59F0001D360 /* CurrencyToPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F64FD51F44B59F0001D360 /* CurrencyToPageViewController.m */; };
+		74F64FDB1F44BA8F0001D360 /* CurrencyFromViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F64FD91F44BA8F0001D360 /* CurrencyFromViewController.m */; };
+		74F64FDC1F44BA8F0001D360 /* CurrencyFromViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F64FDA1F44BA8F0001D360 /* CurrencyFromViewController.xib */; };
+		74F64FE01F44BAA40001D360 /* CurrencyToViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F64FDE1F44BAA40001D360 /* CurrencyToViewController.m */; };
+		74F64FE11F44BAA40001D360 /* CurrencyToViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F64FDF1F44BAA40001D360 /* CurrencyToViewController.xib */; };
+		74F64FE61F451B0E0001D360 /* NumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F64FE51F451B0E0001D360 /* NumberFormatter.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		743521F11F3F2A7A00E1B3F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 743521CF1F3F2A7900E1B3F5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 743521D61F3F2A7900E1B3F5;
+			remoteInfo = RevolutTest;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		743150EB1F4253BE0012C9EC /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
+		743150EC1F4253BE0012C9EC /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
+		743521D71F3F2A7900E1B3F5 /* RevolutTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RevolutTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		743521DB1F3F2A7900E1B3F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		743521DD1F3F2A7900E1B3F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		743521DE1F3F2A7900E1B3F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		743521E41F3F2A7900E1B3F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		743521E61F3F2A7900E1B3F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		743521E91F3F2A7900E1B3F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		743521EB1F3F2A7900E1B3F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		743521F01F3F2A7A00E1B3F5 /* RevolutTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RevolutTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		743521F41F3F2A7A00E1B3F5 /* RevolutTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RevolutTestTests.m; sourceTree = "<group>"; };
+		743521F61F3F2A7A00E1B3F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		743522021F3F8CE800E1B3F5 /* AppSettingsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSettingsService.h; sourceTree = "<group>"; };
+		743522031F3F8CE800E1B3F5 /* AppSettingsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppSettingsService.m; sourceTree = "<group>"; };
+		743522051F3F8D0100E1B3F5 /* CurrencyService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyService.h; sourceTree = "<group>"; };
+		743522061F3F8D0100E1B3F5 /* CurrencyService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyService.m; sourceTree = "<group>"; };
+		743522091F40667C00E1B3F5 /* CurrencyExchangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyExchangeViewController.h; sourceTree = "<group>"; };
+		7435220A1F40667C00E1B3F5 /* CurrencyExchangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyExchangeViewController.m; sourceTree = "<group>"; };
+		743522111F40D3B800E1B3F5 /* CurrencyPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyPageViewController.h; path = RevolutTest/Presentation/ViewController/CurrencyPageViewController.h; sourceTree = SOURCE_ROOT; };
+		743522121F40D3B800E1B3F5 /* CurrencyPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrencyPageViewController.m; path = RevolutTest/Presentation/ViewController/CurrencyPageViewController.m; sourceTree = SOURCE_ROOT; };
+		749176C61F4B8C800014F480 /* KeyValueObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValueObserver.h; sourceTree = "<group>"; };
+		749176C71F4B8C800014F480 /* KeyValueObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyValueObserver.m; sourceTree = "<group>"; };
+		74F64FCD1F441F3D0001D360 /* ExchangeMediator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeMediator.h; sourceTree = "<group>"; };
+		74F64FCE1F441F3D0001D360 /* ExchangeMediator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeMediator.m; sourceTree = "<group>"; };
+		74F64FD11F44B5800001D360 /* CurrencyFromPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyFromPageViewController.h; sourceTree = "<group>"; };
+		74F64FD21F44B5800001D360 /* CurrencyFromPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyFromPageViewController.m; sourceTree = "<group>"; };
+		74F64FD41F44B59F0001D360 /* CurrencyToPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyToPageViewController.h; sourceTree = "<group>"; };
+		74F64FD51F44B59F0001D360 /* CurrencyToPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyToPageViewController.m; sourceTree = "<group>"; };
+		74F64FD81F44BA8F0001D360 /* CurrencyFromViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyFromViewController.h; sourceTree = "<group>"; };
+		74F64FD91F44BA8F0001D360 /* CurrencyFromViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyFromViewController.m; sourceTree = "<group>"; };
+		74F64FDA1F44BA8F0001D360 /* CurrencyFromViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurrencyFromViewController.xib; sourceTree = "<group>"; };
+		74F64FDD1F44BAA40001D360 /* CurrencyToViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyToViewController.h; sourceTree = "<group>"; };
+		74F64FDE1F44BAA40001D360 /* CurrencyToViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyToViewController.m; sourceTree = "<group>"; };
+		74F64FDF1F44BAA40001D360 /* CurrencyToViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurrencyToViewController.xib; sourceTree = "<group>"; };
+		74F64FE31F44F7DF0001D360 /* CurrencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyViewController.h; sourceTree = "<group>"; };
+		74F64FE41F451B0E0001D360 /* NumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberFormatter.h; sourceTree = "<group>"; };
+		74F64FE51F451B0E0001D360 /* NumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberFormatter.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		743521D41F3F2A7900E1B3F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		743521ED1F3F2A7A00E1B3F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		743150EA1F4253980012C9EC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				743150EB1F4253BE0012C9EC /* Currency.h */,
+				743150EC1F4253BE0012C9EC /* Currency.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		743521CE1F3F2A7900E1B3F5 = {
+			isa = PBXGroup;
+			children = (
+				743521D91F3F2A7900E1B3F5 /* RevolutTest */,
+				743521F31F3F2A7A00E1B3F5 /* RevolutTestTests */,
+				743521D81F3F2A7900E1B3F5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		743521D81F3F2A7900E1B3F5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				743521D71F3F2A7900E1B3F5 /* RevolutTest.app */,
+				743521F01F3F2A7A00E1B3F5 /* RevolutTestTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		743521D91F3F2A7900E1B3F5 /* RevolutTest */ = {
+			isa = PBXGroup;
+			children = (
+				743521DD1F3F2A7900E1B3F5 /* AppDelegate.h */,
+				743521DE1F3F2A7900E1B3F5 /* AppDelegate.m */,
+				743150EA1F4253980012C9EC /* Model */,
+				743521FF1F3F8CC100E1B3F5 /* Business logic */,
+				743522011F3F8CC100E1B3F5 /* Presentation */,
+				743521E31F3F2A7900E1B3F5 /* Main.storyboard */,
+				743521E61F3F2A7900E1B3F5 /* Assets.xcassets */,
+				743521E81F3F2A7900E1B3F5 /* LaunchScreen.storyboard */,
+				743521EB1F3F2A7900E1B3F5 /* Info.plist */,
+				743521DA1F3F2A7900E1B3F5 /* Supporting Files */,
+			);
+			path = RevolutTest;
+			sourceTree = "<group>";
+		};
+		743521DA1F3F2A7900E1B3F5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				743521DB1F3F2A7900E1B3F5 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		743521F31F3F2A7A00E1B3F5 /* RevolutTestTests */ = {
+			isa = PBXGroup;
+			children = (
+				743521F41F3F2A7A00E1B3F5 /* RevolutTestTests.m */,
+				743521F61F3F2A7A00E1B3F5 /* Info.plist */,
+			);
+			path = RevolutTestTests;
+			sourceTree = "<group>";
+		};
+		743521FF1F3F8CC100E1B3F5 /* Business logic */ = {
+			isa = PBXGroup;
+			children = (
+				743522001F3F8CC100E1B3F5 /* Service */,
+			);
+			path = "Business logic";
+			sourceTree = "<group>";
+		};
+		743522001F3F8CC100E1B3F5 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				743522021F3F8CE800E1B3F5 /* AppSettingsService.h */,
+				743522031F3F8CE800E1B3F5 /* AppSettingsService.m */,
+				743522051F3F8D0100E1B3F5 /* CurrencyService.h */,
+				743522061F3F8D0100E1B3F5 /* CurrencyService.m */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		743522011F3F8CC100E1B3F5 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				74F64FCC1F441EE80001D360 /* Helper */,
+				743522081F40656300E1B3F5 /* ViewController */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		743522081F40656300E1B3F5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				743522091F40667C00E1B3F5 /* CurrencyExchangeViewController.h */,
+				7435220A1F40667C00E1B3F5 /* CurrencyExchangeViewController.m */,
+				74F64FD01F44B5370001D360 /* CurrencyPageViewController */,
+				74F64FD71F44BA610001D360 /* CurrencyViewController */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		74F64FCC1F441EE80001D360 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				74F64FCD1F441F3D0001D360 /* ExchangeMediator.h */,
+				74F64FCE1F441F3D0001D360 /* ExchangeMediator.m */,
+				74F64FE41F451B0E0001D360 /* NumberFormatter.h */,
+				74F64FE51F451B0E0001D360 /* NumberFormatter.m */,
+				749176C61F4B8C800014F480 /* KeyValueObserver.h */,
+				749176C71F4B8C800014F480 /* KeyValueObserver.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		74F64FD01F44B5370001D360 /* CurrencyPageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				743522111F40D3B800E1B3F5 /* CurrencyPageViewController.h */,
+				743522121F40D3B800E1B3F5 /* CurrencyPageViewController.m */,
+				74F64FD11F44B5800001D360 /* CurrencyFromPageViewController.h */,
+				74F64FD21F44B5800001D360 /* CurrencyFromPageViewController.m */,
+				74F64FD41F44B59F0001D360 /* CurrencyToPageViewController.h */,
+				74F64FD51F44B59F0001D360 /* CurrencyToPageViewController.m */,
+			);
+			path = CurrencyPageViewController;
+			sourceTree = "<group>";
+		};
+		74F64FD71F44BA610001D360 /* CurrencyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				74F64FE31F44F7DF0001D360 /* CurrencyViewController.h */,
+				74F64FD81F44BA8F0001D360 /* CurrencyFromViewController.h */,
+				74F64FD91F44BA8F0001D360 /* CurrencyFromViewController.m */,
+				74F64FDA1F44BA8F0001D360 /* CurrencyFromViewController.xib */,
+				74F64FDD1F44BAA40001D360 /* CurrencyToViewController.h */,
+				74F64FDE1F44BAA40001D360 /* CurrencyToViewController.m */,
+				74F64FDF1F44BAA40001D360 /* CurrencyToViewController.xib */,
+			);
+			path = CurrencyViewController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		743521D61F3F2A7900E1B3F5 /* RevolutTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 743521F91F3F2A7A00E1B3F5 /* Build configuration list for PBXNativeTarget "RevolutTest" */;
+			buildPhases = (
+				743521D31F3F2A7900E1B3F5 /* Sources */,
+				743521D41F3F2A7900E1B3F5 /* Frameworks */,
+				743521D51F3F2A7900E1B3F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RevolutTest;
+			productName = RevolutTest;
+			productReference = 743521D71F3F2A7900E1B3F5 /* RevolutTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		743521EF1F3F2A7A00E1B3F5 /* RevolutTestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 743521FC1F3F2A7A00E1B3F5 /* Build configuration list for PBXNativeTarget "RevolutTestTests" */;
+			buildPhases = (
+				743521EC1F3F2A7A00E1B3F5 /* Sources */,
+				743521ED1F3F2A7A00E1B3F5 /* Frameworks */,
+				743521EE1F3F2A7A00E1B3F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				743521F21F3F2A7A00E1B3F5 /* PBXTargetDependency */,
+			);
+			name = RevolutTestTests;
+			productName = RevolutTestTests;
+			productReference = 743521F01F3F2A7A00E1B3F5 /* RevolutTestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		743521CF1F3F2A7900E1B3F5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = Timonin;
+				TargetAttributes = {
+					743521D61F3F2A7900E1B3F5 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = NF2BWU7PK5;
+						ProvisioningStyle = Automatic;
+					};
+					743521EF1F3F2A7A00E1B3F5 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = NF2BWU7PK5;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 743521D61F3F2A7900E1B3F5;
+					};
+				};
+			};
+			buildConfigurationList = 743521D21F3F2A7900E1B3F5 /* Build configuration list for PBXProject "RevolutTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 743521CE1F3F2A7900E1B3F5;
+			productRefGroup = 743521D81F3F2A7900E1B3F5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				743521D61F3F2A7900E1B3F5 /* RevolutTest */,
+				743521EF1F3F2A7A00E1B3F5 /* RevolutTestTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		743521D51F3F2A7900E1B3F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				743521EA1F3F2A7900E1B3F5 /* LaunchScreen.storyboard in Resources */,
+				74F64FDC1F44BA8F0001D360 /* CurrencyFromViewController.xib in Resources */,
+				743521E71F3F2A7900E1B3F5 /* Assets.xcassets in Resources */,
+				74F64FE11F44BAA40001D360 /* CurrencyToViewController.xib in Resources */,
+				743521E51F3F2A7900E1B3F5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		743521EE1F3F2A7A00E1B3F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		743521D31F3F2A7900E1B3F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				743150ED1F4253BE0012C9EC /* Currency.m in Sources */,
+				74F64FDB1F44BA8F0001D360 /* CurrencyFromViewController.m in Sources */,
+				743522071F3F8D0100E1B3F5 /* CurrencyService.m in Sources */,
+				743521DF1F3F2A7900E1B3F5 /* AppDelegate.m in Sources */,
+				74F64FCF1F441F3D0001D360 /* ExchangeMediator.m in Sources */,
+				743522131F40D3B800E1B3F5 /* CurrencyPageViewController.m in Sources */,
+				74F64FD61F44B59F0001D360 /* CurrencyToPageViewController.m in Sources */,
+				749176C81F4B8C800014F480 /* KeyValueObserver.m in Sources */,
+				74F64FE01F44BAA40001D360 /* CurrencyToViewController.m in Sources */,
+				74F64FD31F44B5800001D360 /* CurrencyFromPageViewController.m in Sources */,
+				743522041F3F8CE800E1B3F5 /* AppSettingsService.m in Sources */,
+				7435220B1F40667C00E1B3F5 /* CurrencyExchangeViewController.m in Sources */,
+				743521DC1F3F2A7900E1B3F5 /* main.m in Sources */,
+				74F64FE61F451B0E0001D360 /* NumberFormatter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		743521EC1F3F2A7A00E1B3F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				743521F51F3F2A7A00E1B3F5 /* RevolutTestTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		743521F21F3F2A7A00E1B3F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 743521D61F3F2A7900E1B3F5 /* RevolutTest */;
+			targetProxy = 743521F11F3F2A7A00E1B3F5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		743521E31F3F2A7900E1B3F5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				743521E41F3F2A7900E1B3F5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		743521E81F3F2A7900E1B3F5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				743521E91F3F2A7900E1B3F5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		743521F71F3F2A7A00E1B3F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		743521F81F3F2A7A00E1B3F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		743521FA1F3F2A7A00E1B3F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NF2BWU7PK5;
+				INFOPLIST_FILE = RevolutTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Timonin.RevolutTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		743521FB1F3F2A7A00E1B3F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NF2BWU7PK5;
+				INFOPLIST_FILE = RevolutTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Timonin.RevolutTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		743521FD1F3F2A7A00E1B3F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = NF2BWU7PK5;
+				INFOPLIST_FILE = RevolutTestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Timonin.RevolutTestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RevolutTest.app/RevolutTest";
+			};
+			name = Debug;
+		};
+		743521FE1F3F2A7A00E1B3F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = NF2BWU7PK5;
+				INFOPLIST_FILE = RevolutTestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Timonin.RevolutTestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RevolutTest.app/RevolutTest";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		743521D21F3F2A7900E1B3F5 /* Build configuration list for PBXProject "RevolutTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				743521F71F3F2A7A00E1B3F5 /* Debug */,
+				743521F81F3F2A7A00E1B3F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		743521F91F3F2A7A00E1B3F5 /* Build configuration list for PBXNativeTarget "RevolutTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				743521FA1F3F2A7A00E1B3F5 /* Debug */,
+				743521FB1F3F2A7A00E1B3F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		743521FC1F3F2A7A00E1B3F5 /* Build configuration list for PBXNativeTarget "RevolutTestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				743521FD1F3F2A7A00E1B3F5 /* Debug */,
+				743521FE1F3F2A7A00E1B3F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 743521CF1F3F2A7900E1B3F5 /* Project object */;
+}

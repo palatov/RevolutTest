@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gnC-IJ-dq7">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Currency Exchange View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="CurrencyExchangeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="W4q-Lm-lhJ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yWU-mw-RZd">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oED-Lc-jgc">
+                                        <rect key="frame" x="0.0" y="211" width="375" height="1"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="XHa-3y-8g5"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUJ-bc-KEV">
+                                        <rect key="frame" x="0.0" y="212" width="375" height="211"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Nx-PQ-rJM">
+                                        <rect key="frame" x="0.0" y="423" width="375" height="180"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="180" id="bGk-S9-BI3"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="UUJ-bc-KEV" firstAttribute="height" secondItem="yWU-mw-RZd" secondAttribute="height" id="ol9-xD-tp0"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="W4q-Lm-lhJ" secondAttribute="trailing" id="HLK-ob-Toa"/>
+                            <constraint firstItem="W4q-Lm-lhJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="TTI-O8-bUo"/>
+                            <constraint firstItem="W4q-Lm-lhJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="WEu-dh-ibl"/>
+                            <constraint firstAttribute="bottom" secondItem="W4q-Lm-lhJ" secondAttribute="bottom" id="ddU-uT-ata"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="olG-pN-1pQ"/>
+                    <connections>
+                        <outlet property="firstContainerView" destination="yWU-mw-RZd" id="uPs-CP-rLg"/>
+                        <outlet property="keyboardSpaceholder" destination="7Nx-PQ-rJM" id="ZlN-ig-Ybd"/>
+                        <outlet property="keyboardSpaceholderDefaultHeight" destination="bGk-S9-BI3" id="ZdK-yx-TAQ"/>
+                        <outlet property="secondContainerView" destination="UUJ-bc-KEV" id="4YB-Su-rRa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="740" y="-224"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4ZG-Ii-st2">
+            <objects>
+                <navigationController id="gnC-IJ-dq7" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eWC-bd-Z5Q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="VYy-dC-bmC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ALb-xE-UFE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-129" y="-224"/>
+        </scene>
+    </scenes>
+</document>

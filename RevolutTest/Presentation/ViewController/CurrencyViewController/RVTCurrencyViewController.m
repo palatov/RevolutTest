@@ -7,6 +7,7 @@
 //
 
 #import "RVTCurrencyViewController.h"
+#import "RVTConstants.h"
 
 @interface RVTCurrencyViewController ()
 
@@ -28,22 +29,22 @@
     [super viewDidLoad];
     
     [self.mediator addObserver:self
-                    forKeyPath:@"gbpBalance"
+                    forKeyPath:gbpBalance
                        options:NSKeyValueObservingOptionNew
                        context:nil];
     
     [self.mediator addObserver:self
-                    forKeyPath:@"usdBalance"
+                    forKeyPath:usdBalance
                        options:NSKeyValueObservingOptionNew
                        context:nil];
     
     [self.mediator addObserver:self
-                    forKeyPath:@"eurBalance"
+                    forKeyPath:eurBalance
                        options:NSKeyValueObservingOptionNew
                        context:nil];
     
     [self.currency addObserver:self
-                    forKeyPath:@"lastUpdateTimestamp"
+                    forKeyPath:lastUpdateTimestamp
                        options:NSKeyValueObservingOptionNew
                        context:nil];
 }

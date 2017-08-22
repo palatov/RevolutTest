@@ -8,7 +8,7 @@
 
 #import "RVTCurrencyService.h"
 #import "RVTAppSettingsService.h"
-
+#import "RVTConstants.h"
 
 @interface RVTCurrencyService () <NSXMLParserDelegate>
 
@@ -24,13 +24,12 @@
 
 @implementation RVTCurrencyService
 
-static NSString *rate = @"rate";
-static NSString *ecbRates = @"http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
+static NSString * const ecbRates = @"http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
 
 - (instancetype)initWithCompletionBlock: (completionBlock) block errorHandler: (errorHandler) handler {
     self = [super init];
-    self.completionBlock = block;
-    self.errorHandler = handler;
+    _completionBlock = block;
+    _errorHandler = handler;
     return self;
 }
 
@@ -54,12 +53,13 @@ static NSString *ecbRates = @"http://www.ecb.europa.eu/stats/eurofxref/eurofxref
   
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-
+    
+    __weak RVTCurrencyService *weakSelf = self;
     NSURLSessionDataTask *task = [session dataTaskWithURL:url
                                         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error != nil) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                self.errorHandler(error);
+                weakSelf.errorHandler(error);
             }];
         }
         else{
@@ -88,12 +88,12 @@ qualifiedName:(NSString *)qName
     
     if ([elementName isEqualToString:@"Cube"]) {
        
-        if ([currency  isEqual: @"USD"]) {
-            self.eurToUsdRate = [attributeDict[rate] doubleValue];
+        if ([currency  isEqual: USD]) {
+            self.eurToUsdRate = [attributeDict[@"rate"] doubleValue];
         }
         
-        if ([currency  isEqual: @"GBP"]) {
-            self.eurToGbpRate = [attributeDict[rate] doubleValue];
+        if ([currency  isEqual: GBP]) {
+            self.eurToGbpRate = [attributeDict[@"rate"] doubleValue];
         }
     }
 }
@@ -107,19 +107,19 @@ qualifiedName:(NSString *)qName
         double lastUpdateTimestamp = [[NSDate date] timeIntervalSince1970];
         double gbpToUsdRate = self.eurToUsdRate / self.eurToGbpRate;
         
-        RVTCurrency *usd = [[RVTCurrency alloc] initWith:@"USD"
+        RVTCurrency *usd = [[RVTCurrency alloc] initWith:USD
                                                toEURRate:1/self.eurToUsdRate
                                                toUSDRate:1.0
                                                toGBPRate:1/gbpToUsdRate
                                      lastUpdateTimestamp:lastUpdateTimestamp];
         
-        RVTCurrency *gbp = [[RVTCurrency alloc] initWith:@"GBP"
+        RVTCurrency *gbp = [[RVTCurrency alloc] initWith:GBP
                                                toEURRate:1/self.eurToGbpRate
                                                toUSDRate:gbpToUsdRate
                                                toGBPRate:1.0
                                      lastUpdateTimestamp:lastUpdateTimestamp];
         
-        RVTCurrency *eur = [[RVTCurrency alloc] initWith:@"EUR"
+        RVTCurrency *eur = [[RVTCurrency alloc] initWith:GBP
                                                toEURRate:1.0
                                                toUSDRate:self.eurToUsdRate
                                                toGBPRate:self.eurToGbpRate

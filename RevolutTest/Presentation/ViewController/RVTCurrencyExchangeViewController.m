@@ -12,6 +12,7 @@
 #import "RVTCurrency.h"
 #import "RVTCurrencyService.h"
 #import "RVTCurrencyFromViewController.h"
+#import "RVTConstants.h"
 
 @interface RVTCurrencyExchangeViewController ()
 
@@ -72,10 +73,9 @@
 }
 
 -(void)setupExchangeMediator: (NSArray<RVTCurrency *> *) currencies {
-    // TODO: - позже можно заменить его на протокол
     if (!self.mediator) {
         self.mediator = [[RVTExchangeMediator alloc] initWithCurrencies:currencies];
-        [self.mediator addObserver:self forKeyPath:@"exchangeIsPossible" options:NSKeyValueObservingOptionNew context:nil];
+        [self.mediator addObserver:self forKeyPath:exchangeIsPossible options:NSKeyValueObservingOptionNew context:nil];
     } else {
         [self.mediator updateCurrencies:currencies];
     }
@@ -143,7 +143,7 @@
                       ofObject:(id)object change:(NSDictionary *)change
                        context:(void *)context {
     
-    if ([keyPath isEqualToString:@"exchangeIsPossible"]) {
+    if ([keyPath isEqualToString:exchangeIsPossible]) {
         NSNumber *isPossible = change[@"new"];
         [self.navigationItem.rightBarButtonItem setEnabled: [isPossible boolValue]];
     }

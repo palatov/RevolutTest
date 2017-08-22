@@ -19,6 +19,7 @@
 		7435220B1F40667C00E1B3F5 /* RVTCurrencyExchangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7435220A1F40667C00E1B3F5 /* RVTCurrencyExchangeViewController.m */; };
 		743522131F40D3B800E1B3F5 /* RVTCurrencyPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 743522121F40D3B800E1B3F5 /* RVTCurrencyPageViewController.m */; };
 		749176CB1F4C87D70014F480 /* RVTCurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 749176CA1F4C87D70014F480 /* RVTCurrencyViewController.m */; };
+		749176CF1F4CBF690014F480 /* RVTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 749176CE1F4CBF690014F480 /* RVTConstants.m */; };
 		74F64FCF1F441F3D0001D360 /* RVTExchangeMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F64FCE1F441F3D0001D360 /* RVTExchangeMediator.m */; };
 		74F64FD31F44B5800001D360 /* RVTCurrencyFromPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F64FD21F44B5800001D360 /* RVTCurrencyFromPageViewController.m */; };
 		74F64FD61F44B59F0001D360 /* RVTCurrencyToPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F64FD51F44B59F0001D360 /* RVTCurrencyToPageViewController.m */; };
@@ -63,6 +64,8 @@
 		743522121F40D3B800E1B3F5 /* RVTCurrencyPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RVTCurrencyPageViewController.m; path = RevolutTest/Presentation/ViewController/RVTCurrencyPageViewController.m; sourceTree = SOURCE_ROOT; };
 		749176C91F4C87D70014F480 /* RVTCurrencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVTCurrencyViewController.h; sourceTree = "<group>"; };
 		749176CA1F4C87D70014F480 /* RVTCurrencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVTCurrencyViewController.m; sourceTree = "<group>"; };
+		749176CD1F4CBF690014F480 /* RVTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVTConstants.h; sourceTree = "<group>"; };
+		749176CE1F4CBF690014F480 /* RVTConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVTConstants.m; sourceTree = "<group>"; };
 		74F64FCD1F441F3D0001D360 /* RVTExchangeMediator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVTExchangeMediator.h; sourceTree = "<group>"; };
 		74F64FCE1F441F3D0001D360 /* RVTExchangeMediator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVTExchangeMediator.m; sourceTree = "<group>"; };
 		74F64FD11F44B5800001D360 /* RVTCurrencyFromPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVTCurrencyFromPageViewController.h; sourceTree = "<group>"; };
@@ -161,6 +164,7 @@
 		743521FF1F3F8CC100E1B3F5 /* Business logic */ = {
 			isa = PBXGroup;
 			children = (
+				749176CC1F4CBF250014F480 /* Helper */,
 				743522001F3F8CC100E1B3F5 /* Service */,
 			);
 			path = "Business logic";
@@ -195,6 +199,15 @@
 				74F64FD71F44BA610001D360 /* CurrencyViewController */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		749176CC1F4CBF250014F480 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				749176CD1F4CBF690014F480 /* RVTConstants.h */,
+				749176CE1F4CBF690014F480 /* RVTConstants.m */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		74F64FCC1F441EE80001D360 /* Helper */ = {
@@ -343,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				749176CB1F4C87D70014F480 /* RVTCurrencyViewController.m in Sources */,
+				749176CF1F4CBF690014F480 /* RVTConstants.m in Sources */,
 				743150ED1F4253BE0012C9EC /* RVTCurrency.m in Sources */,
 				74F64FDB1F44BA8F0001D360 /* RVTCurrencyFromViewController.m in Sources */,
 				743522071F3F8D0100E1B3F5 /* RVTCurrencyService.m in Sources */,

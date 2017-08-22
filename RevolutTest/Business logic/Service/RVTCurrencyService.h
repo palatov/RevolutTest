@@ -13,6 +13,7 @@
 
 typedef void(^completionBlock)(NSArray<RVTCurrency *> *);
 typedef void(^errorHandler)(NSError *error);
+
 - (instancetype)initWithCompletionBlock: (completionBlock) block errorHandler: (errorHandler) handler;
 - (void)updateCurrencies; 
 

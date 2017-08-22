@@ -7,33 +7,28 @@
 //
 
 #import "RVTAppSettingsService.h"
+#import "RVTConstants.h"
 
 @implementation RVTAppSettingsService
 
-static NSString *lastUpdateDate = @"lastUpdateDate";
-static NSString *usd = @"USD";
-static NSString *gbp = @"GBP";
-static NSString *eur = @"EUR";
-
-
 // Set default currency values
 +(void)setupInitialCurrencyBalance {
-    [[NSUserDefaults standardUserDefaults] setDouble:100 forKey:usd];
-    [[NSUserDefaults standardUserDefaults] setDouble:100 forKey:gbp];
-    [[NSUserDefaults standardUserDefaults] setDouble:100 forKey:eur];
+    [[NSUserDefaults standardUserDefaults] setDouble:100 forKey:USD];
+    [[NSUserDefaults standardUserDefaults] setDouble:100 forKey:GBP];
+    [[NSUserDefaults standardUserDefaults] setDouble:100 forKey:EUR];
 }
 
 // Get current balance
 +(double)getGBPBalance {
-    return [[NSUserDefaults standardUserDefaults] doubleForKey:gbp];
+    return [[NSUserDefaults standardUserDefaults] doubleForKey:GBP];
 }
 
 +(double)getUSDBalance {
-    return [[NSUserDefaults standardUserDefaults] doubleForKey:usd];
+    return [[NSUserDefaults standardUserDefaults] doubleForKey:USD];
 }
 
 +(double)getEURBalance {
-    return [[NSUserDefaults standardUserDefaults] doubleForKey:eur];
+    return [[NSUserDefaults standardUserDefaults] doubleForKey:EUR];
 }
 
 // Set new balance

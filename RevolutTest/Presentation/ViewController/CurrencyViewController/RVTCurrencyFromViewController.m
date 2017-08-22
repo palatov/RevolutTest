@@ -8,6 +8,7 @@
 
 #import "RVTCurrencyFromViewController.h"
 #import "RVTNumberFormatter.h"
+#import "RVTConstants.h"
 
 @interface RVTCurrencyFromViewController () <UITextFieldDelegate>
 
@@ -24,12 +25,12 @@
     self.currencyNameLabel.text = self.currency.currencyId;
     
     [self.mediator addObserver:self
-                    forKeyPath:@"currencyTo"
+                    forKeyPath:currencyTo
                        options:NSKeyValueObservingOptionNew
                        context:nil];
     
     [self.mediator addObserver:self
-                    forKeyPath:@"exchangeIsPossible"
+                    forKeyPath:exchangeIsPossible
                        options:NSKeyValueObservingOptionNew
                        context:nil];
 }
@@ -53,7 +54,7 @@
                       ofObject:(id)object change:(NSDictionary *)change
                        context:(void *)context {
     
-    if ([keyPath isEqualToString:@"currencyTo"]) {
+    if ([keyPath isEqualToString:currencyTo]) {
         RVTCurrency *currencyTo = change[@"new"];
         NSString *rate = [RVTNumberFormatter stringFromDouble: [currencyTo rateForCurrencyWithId:self.currency.currencyId]];
         self.currencyRateLabel.text = [NSString stringWithFormat:@"%@1 = %@%@",
@@ -62,27 +63,27 @@
                                        rate];
     }
     
-    if ([keyPath isEqualToString:@"exchangeIsPossible"]) {
+    if ([keyPath isEqualToString:exchangeIsPossible]) {
         NSNumber *isPossible = change[@"new"];
         self.currencyAmmountLabel.textColor = [isPossible boolValue] ? [UIColor whiteColor] : [UIColor redColor];
     }
     
-    if ([keyPath isEqualToString:@"gbpBalance"] && [self.currency.currencyId isEqualToString:@"GBP"]) {
+    if ([keyPath isEqualToString:gbpBalance] && [self.currency.currencyId isEqualToString:GBP]) {
         NSNumber *newAmount = change[@"new"];
         self.currencyAmmountLabel.text = [RVTNumberFormatter stringFromDouble: [newAmount doubleValue]];
     }
     
-    if ([keyPath isEqualToString:@"usdBalance"] && [self.currency.currencyId isEqualToString:@"USD"]) {
+    if ([keyPath isEqualToString:usdBalance] && [self.currency.currencyId isEqualToString:USD]) {
         NSNumber *newAmount = change[@"new"];
         self.currencyAmmountLabel.text = [RVTNumberFormatter stringFromDouble: [newAmount doubleValue]];
     }
     
-    if ([keyPath isEqualToString:@"eurBalance"] && [self.currency.currencyId isEqualToString:@"EUR"]) {
+    if ([keyPath isEqualToString:eurBalance] && [self.currency.currencyId isEqualToString:EUR]) {
         NSNumber *newAmount = change[@"new"];
         self.currencyAmmountLabel.text = [RVTNumberFormatter stringFromDouble: [newAmount doubleValue]];
     }
     
-    if ([keyPath isEqualToString:@"lastUpdateTimestamp"]) {
+    if ([keyPath isEqualToString:lastUpdateTimestamp]) {
         [self updateRateLabel];
     }
 }

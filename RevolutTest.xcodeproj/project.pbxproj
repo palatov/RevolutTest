@@ -18,13 +18,14 @@
 		743522071F3F8D0100E1B3F5 /* RVTCurrencyService.m in Sources */ = {isa = PBXBuildFile; fileRef = 743522061F3F8D0100E1B3F5 /* RVTCurrencyService.m */; };
 		7435220B1F40667C00E1B3F5 /* RVTCurrencyExchangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7435220A1F40667C00E1B3F5 /* RVTCurrencyExchangeViewController.m */; };
 		743522131F40D3B800E1B3F5 /* RVTCurrencyPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 743522121F40D3B800E1B3F5 /* RVTCurrencyPageViewController.m */; };
+		749176CB1F4C87D70014F480 /* RVTCurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 749176CA1F4C87D70014F480 /* RVTCurrencyViewController.m */; };
 		74F64FCF1F441F3D0001D360 /* RVTExchangeMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F64FCE1F441F3D0001D360 /* RVTExchangeMediator.m */; };
 		74F64FD31F44B5800001D360 /* RVTCurrencyFromPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F64FD21F44B5800001D360 /* RVTCurrencyFromPageViewController.m */; };
 		74F64FD61F44B59F0001D360 /* RVTCurrencyToPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F64FD51F44B59F0001D360 /* RVTCurrencyToPageViewController.m */; };
 		74F64FDB1F44BA8F0001D360 /* RVTCurrencyFromViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F64FD91F44BA8F0001D360 /* RVTCurrencyFromViewController.m */; };
-		74F64FDC1F44BA8F0001D360 /* CurrencyFromViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F64FDA1F44BA8F0001D360 /* CurrencyFromViewController.xib */; };
+		74F64FDC1F44BA8F0001D360 /* RVTCurrencyFromViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F64FDA1F44BA8F0001D360 /* RVTCurrencyFromViewController.xib */; };
 		74F64FE01F44BAA40001D360 /* RVTCurrencyToViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F64FDE1F44BAA40001D360 /* RVTCurrencyToViewController.m */; };
-		74F64FE11F44BAA40001D360 /* CurrencyToViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F64FDF1F44BAA40001D360 /* CurrencyToViewController.xib */; };
+		74F64FE11F44BAA40001D360 /* RVTCurrencyToViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F64FDF1F44BAA40001D360 /* RVTCurrencyToViewController.xib */; };
 		74F64FE61F451B0E0001D360 /* RVTNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F64FE51F451B0E0001D360 /* RVTNumberFormatter.m */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,8 @@
 		7435220A1F40667C00E1B3F5 /* RVTCurrencyExchangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVTCurrencyExchangeViewController.m; sourceTree = "<group>"; };
 		743522111F40D3B800E1B3F5 /* RVTCurrencyPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RVTCurrencyPageViewController.h; path = RevolutTest/Presentation/ViewController/RVTCurrencyPageViewController.h; sourceTree = SOURCE_ROOT; };
 		743522121F40D3B800E1B3F5 /* RVTCurrencyPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RVTCurrencyPageViewController.m; path = RevolutTest/Presentation/ViewController/RVTCurrencyPageViewController.m; sourceTree = SOURCE_ROOT; };
+		749176C91F4C87D70014F480 /* RVTCurrencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVTCurrencyViewController.h; sourceTree = "<group>"; };
+		749176CA1F4C87D70014F480 /* RVTCurrencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVTCurrencyViewController.m; sourceTree = "<group>"; };
 		74F64FCD1F441F3D0001D360 /* RVTExchangeMediator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVTExchangeMediator.h; sourceTree = "<group>"; };
 		74F64FCE1F441F3D0001D360 /* RVTExchangeMediator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVTExchangeMediator.m; sourceTree = "<group>"; };
 		74F64FD11F44B5800001D360 /* RVTCurrencyFromPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVTCurrencyFromPageViewController.h; sourceTree = "<group>"; };
@@ -68,11 +71,10 @@
 		74F64FD51F44B59F0001D360 /* RVTCurrencyToPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVTCurrencyToPageViewController.m; sourceTree = "<group>"; };
 		74F64FD81F44BA8F0001D360 /* RVTCurrencyFromViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVTCurrencyFromViewController.h; sourceTree = "<group>"; };
 		74F64FD91F44BA8F0001D360 /* RVTCurrencyFromViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVTCurrencyFromViewController.m; sourceTree = "<group>"; };
-		74F64FDA1F44BA8F0001D360 /* CurrencyFromViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurrencyFromViewController.xib; sourceTree = "<group>"; };
+		74F64FDA1F44BA8F0001D360 /* RVTCurrencyFromViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RVTCurrencyFromViewController.xib; sourceTree = "<group>"; };
 		74F64FDD1F44BAA40001D360 /* RVTCurrencyToViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVTCurrencyToViewController.h; sourceTree = "<group>"; };
 		74F64FDE1F44BAA40001D360 /* RVTCurrencyToViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVTCurrencyToViewController.m; sourceTree = "<group>"; };
-		74F64FDF1F44BAA40001D360 /* CurrencyToViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurrencyToViewController.xib; sourceTree = "<group>"; };
-		74F64FE31F44F7DF0001D360 /* RVTCurrencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVTCurrencyViewController.h; sourceTree = "<group>"; };
+		74F64FDF1F44BAA40001D360 /* RVTCurrencyToViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RVTCurrencyToViewController.xib; sourceTree = "<group>"; };
 		74F64FE41F451B0E0001D360 /* RVTNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVTNumberFormatter.h; sourceTree = "<group>"; };
 		74F64FE51F451B0E0001D360 /* RVTNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVTNumberFormatter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -222,13 +224,14 @@
 		74F64FD71F44BA610001D360 /* CurrencyViewController */ = {
 			isa = PBXGroup;
 			children = (
-				74F64FE31F44F7DF0001D360 /* RVTCurrencyViewController.h */,
+				749176C91F4C87D70014F480 /* RVTCurrencyViewController.h */,
+				749176CA1F4C87D70014F480 /* RVTCurrencyViewController.m */,
 				74F64FD81F44BA8F0001D360 /* RVTCurrencyFromViewController.h */,
 				74F64FD91F44BA8F0001D360 /* RVTCurrencyFromViewController.m */,
-				74F64FDA1F44BA8F0001D360 /* CurrencyFromViewController.xib */,
+				74F64FDA1F44BA8F0001D360 /* RVTCurrencyFromViewController.xib */,
 				74F64FDD1F44BAA40001D360 /* RVTCurrencyToViewController.h */,
 				74F64FDE1F44BAA40001D360 /* RVTCurrencyToViewController.m */,
-				74F64FDF1F44BAA40001D360 /* CurrencyToViewController.xib */,
+				74F64FDF1F44BAA40001D360 /* RVTCurrencyToViewController.xib */,
 			);
 			path = CurrencyViewController;
 			sourceTree = "<group>";
@@ -318,9 +321,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				743521EA1F3F2A7900E1B3F5 /* LaunchScreen.storyboard in Resources */,
-				74F64FDC1F44BA8F0001D360 /* CurrencyFromViewController.xib in Resources */,
+				74F64FDC1F44BA8F0001D360 /* RVTCurrencyFromViewController.xib in Resources */,
 				743521E71F3F2A7900E1B3F5 /* Assets.xcassets in Resources */,
-				74F64FE11F44BAA40001D360 /* CurrencyToViewController.xib in Resources */,
+				74F64FE11F44BAA40001D360 /* RVTCurrencyToViewController.xib in Resources */,
 				743521E51F3F2A7900E1B3F5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				749176CB1F4C87D70014F480 /* RVTCurrencyViewController.m in Sources */,
 				743150ED1F4253BE0012C9EC /* RVTCurrency.m in Sources */,
 				74F64FDB1F44BA8F0001D360 /* RVTCurrencyFromViewController.m in Sources */,
 				743522071F3F8D0100E1B3F5 /* RVTCurrencyService.m in Sources */,

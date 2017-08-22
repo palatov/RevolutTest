@@ -68,7 +68,7 @@
 
 -(void)pageViewController:(UIPageViewController *)pageViewController
 willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers {
-    self.currentController = (id<RVTCurrencyViewController>)pendingViewControllers.firstObject;
+    self.currentController = (RVTCurrencyViewController *)pendingViewControllers.firstObject;
 }
 
 @end

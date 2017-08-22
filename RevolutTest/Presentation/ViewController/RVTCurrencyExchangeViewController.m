@@ -31,6 +31,10 @@
     
     self.currencyService = [[RVTCurrencyService alloc] initWithCompletionBlock:^(NSArray<RVTCurrency *> *currencies) {
         [self setupExchangeMediator:currencies];
+        if (self.currencyFromPageViewController == nil && self.currencyToPageViewController == nil) {
+            [self setupPageViewControllers];
+            [self setupTextField];
+        }
         [self.navigationItem.rightBarButtonItem setEnabled: TRUE];
     } errorHandler:^(NSError *error) {
         [self.navigationItem.rightBarButtonItem setEnabled: FALSE];
@@ -75,10 +79,6 @@
     } else {
         [self.mediator updateCurrencies:currencies];
     }
-    
-    if (self.currencyFromPageViewController == nil && self.currencyToPageViewController == nil) {
-        [self setupPageViewControllers];
-    }
 }
 
 -(void)setupPageViewControllers {
@@ -91,9 +91,31 @@
     
     [self addPageViewController:self.currencyToPageViewController
                 toContainerView:self.secondContainerView];
+}
+
+-(void)setupTextField {
+    UITextField *textField = [UITextField new];
+    textField.textColor = [UIColor whiteColor];
+    textField.keyboardType = UIKeyboardTypeNumberPad;
+    textField.backgroundColor = [UIColor blackColor];
+    textField.textAlignment = NSTextAlignmentRight;
+    textField.font = [UIFont systemFontOfSize:25.0];
+    textField.translatesAutoresizingMaskIntoConstraints = FALSE;
+    [self.firstContainerView addSubview:textField];
+    NSArray * arr = @[[textField.trailingAnchor constraintEqualToAnchor:self.firstContainerView.trailingAnchor constant: -16.0],
+                      [textField.topAnchor constraintEqualToAnchor:self.firstContainerView.topAnchor constant: 16.0],
+                      [textField.widthAnchor constraintEqualToConstant:140.0]
+                      ];
+    [NSLayoutConstraint activateConstraints:arr];
+    [textField becomeFirstResponder];
     
-    RVTCurrencyFromViewController * initialController = (RVTCurrencyFromViewController *)self.currencyFromPageViewController.viewControllers.firstObject;
-    [initialController.textField becomeFirstResponder];
+    [textField addTarget:self
+                  action:@selector(didEditTextField:)
+        forControlEvents:UIControlEventEditingChanged];
+}
+
+-(void)didEditTextField: (UITextField *)textField {
+    [self.mediator exchangeCurrencyWithAmmount:[textField.text doubleValue]];
 }
 
 - (void)addPageViewController: (UIPageViewController *)pageViewController
@@ -102,11 +124,10 @@
     [pageViewController didMoveToParentViewController:self];
     [containerView addSubview:pageViewController.view];
     pageViewController.view.translatesAutoresizingMaskIntoConstraints = false;
-    NSArray *arr = @[
-    [pageViewController.view.leadingAnchor constraintEqualToAnchor:containerView.leadingAnchor],
-    [pageViewController.view.trailingAnchor constraintEqualToAnchor:containerView.trailingAnchor],
-    [pageViewController.view.topAnchor constraintEqualToAnchor:containerView.topAnchor],
-    [pageViewController.view.bottomAnchor constraintEqualToAnchor:containerView.bottomAnchor]];
+    NSArray *arr = @[ [pageViewController.view.leadingAnchor constraintEqualToAnchor:containerView.leadingAnchor],
+                      [pageViewController.view.trailingAnchor constraintEqualToAnchor:containerView.trailingAnchor],
+                      [pageViewController.view.topAnchor constraintEqualToAnchor:containerView.topAnchor],
+                      [pageViewController.view.bottomAnchor constraintEqualToAnchor:containerView.bottomAnchor]];
     [NSLayoutConstraint activateConstraints:arr];
 }
 

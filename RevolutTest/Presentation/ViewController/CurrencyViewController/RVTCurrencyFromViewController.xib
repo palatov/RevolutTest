@@ -14,7 +14,6 @@
                 <outlet property="currencyAmmountLabel" destination="1Lk-8x-wbd" id="rGC-yK-qKc"/>
                 <outlet property="currencyNameLabel" destination="hzb-vu-tOt" id="V60-gU-HIW"/>
                 <outlet property="currencyRateLabel" destination="mUG-Hw-QMF" id="w5k-XS-blA"/>
-                <outlet property="textField" destination="Kar-xd-C8h" id="41a-kA-0f8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -29,23 +28,14 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kar-xd-C8h">
-                    <rect key="frame" x="219" y="16" width="140" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="140" id="J4S-37-uKQ"/>
-                    </constraints>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Lk-8x-wbd">
-                    <rect key="frame" x="16" y="54" width="42" height="21"/>
+                    <rect key="frame" x="16" y="61" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUG-Hw-QMF">
-                    <rect key="frame" x="317" y="54" width="42" height="21"/>
+                    <rect key="frame" x="317" y="61" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -53,15 +43,14 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="mUG-Hw-QMF" firstAttribute="trailing" secondItem="Kar-xd-C8h" secondAttribute="trailing" id="5mv-wW-6Qj"/>
+                <constraint firstItem="1Lk-8x-wbd" firstAttribute="top" secondItem="hzb-vu-tOt" secondAttribute="bottom" constant="16" id="7fu-X9-OmR"/>
+                <constraint firstAttribute="trailing" secondItem="mUG-Hw-QMF" secondAttribute="trailing" constant="16" id="GAy-6f-FZB"/>
                 <constraint firstItem="hzb-vu-tOt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="JAM-X1-i4p"/>
-                <constraint firstItem="mUG-Hw-QMF" firstAttribute="top" secondItem="Kar-xd-C8h" secondAttribute="bottom" constant="8" id="ZuL-hy-haj"/>
-                <constraint firstAttribute="trailing" secondItem="Kar-xd-C8h" secondAttribute="trailing" constant="16" id="g6N-ys-1t0"/>
                 <constraint firstItem="mUG-Hw-QMF" firstAttribute="centerY" secondItem="1Lk-8x-wbd" secondAttribute="centerY" id="hjm-xx-Uhc"/>
                 <constraint firstItem="hzb-vu-tOt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="16" id="pzJ-jv-Hwm"/>
-                <constraint firstItem="Kar-xd-C8h" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="16" id="tCs-Ij-7oF"/>
                 <constraint firstItem="1Lk-8x-wbd" firstAttribute="leading" secondItem="hzb-vu-tOt" secondAttribute="leading" id="tOc-pF-AAw"/>
             </constraints>
+            <point key="canvasLocation" x="34.5" y="57.5"/>
         </view>
     </objects>
 </document>

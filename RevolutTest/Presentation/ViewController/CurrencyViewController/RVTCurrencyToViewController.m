@@ -12,9 +12,6 @@
 
 @interface RVTCurrencyToViewController ()
 
-@property (strong, nonatomic) RVTExchangeMediator *mediator;
-@property (strong, nonatomic) RVTCurrency *currency;
-
 @property (weak, nonatomic) IBOutlet UILabel *currencyNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *exchangedAmmountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *currencyAmmountLabel;
@@ -23,13 +20,6 @@
 @end
 
 @implementation RVTCurrencyToViewController
-
--(instancetype)initWithCurrency:(RVTCurrency *)currency mediator: (RVTExchangeMediator *) mediator {
-    self = [super initWithNibName:@"CurrencyToViewController" bundle: nil];
-    _currency = currency;
-    _mediator = mediator;
-    return self;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,26 +32,6 @@
     
     [self.mediator addObserver:self
                     forKeyPath:@"currencyFrom"
-                       options:NSKeyValueObservingOptionNew
-                       context:nil];
-    
-    [self.mediator addObserver:self
-                    forKeyPath:@"gbpBalance"
-                       options:NSKeyValueObservingOptionNew
-                       context:nil];
-    
-    [self.mediator addObserver:self
-                    forKeyPath:@"usdBalance"
-                       options:NSKeyValueObservingOptionNew
-                       context:nil];
-    
-    [self.mediator addObserver:self
-                    forKeyPath:@"eurBalance"
-                       options:NSKeyValueObservingOptionNew
-                       context:nil];
-    
-    [self.currency addObserver:self
-                    forKeyPath:@"lastUpdateTimestamp"
                        options:NSKeyValueObservingOptionNew
                        context:nil];
 }
@@ -118,13 +88,6 @@
     if ([keyPath isEqualToString:@"lastUpdateTimestamp"]) {
         [self updateRateLabel];
     }
-}
-
-
-// MARK: - CurrencyViewController
-
--(RVTCurrency *)currentCurrency {
-    return self.currency;
 }
 
 @end

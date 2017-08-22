@@ -11,10 +11,6 @@
 #import "RVTCurrency.h"
 #import "RVTCurrencyViewController.h"
 
-@interface RVTCurrencyFromViewController : UIViewController < RVTCurrencyViewController >
-
-// TODO - cделать currency приватным для записи из вне
-@property (weak, nonatomic) IBOutlet UITextField *textField;
--(instancetype)initWithCurrency:(RVTCurrency *)currency mediator: (RVTExchangeMediator *) mediator;
+@interface RVTCurrencyFromViewController : RVTCurrencyViewController
 
 @end

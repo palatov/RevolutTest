@@ -10,8 +10,6 @@
 #import "RVTExchangeMediator.h"
 #import "RVTCurrencyViewController.h"
 
-@interface RVTCurrencyToViewController : UIViewController <RVTCurrencyViewController>
-
--(instancetype)initWithCurrency:(RVTCurrency *)currency mediator: (RVTExchangeMediator *) mediator;
+@interface RVTCurrencyToViewController : RVTCurrencyViewController
 
 @end

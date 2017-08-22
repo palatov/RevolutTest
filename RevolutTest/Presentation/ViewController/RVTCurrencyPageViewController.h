@@ -14,7 +14,7 @@
 
 // TODO: - cделать оба эти проперти доступными для записи только изнутри
 @property (strong ,nonatomic) RVTExchangeMediator * _Nonnull mediator;
-@property (strong, nonatomic) id<RVTCurrencyViewController> _Nullable currentController;
+@property (strong, nonatomic) RVTCurrencyViewController * _Nullable currentController;
 @property (strong, nonatomic) NSArray * _Nullable controllers;
 
 - (instancetype _Nonnull )initWithMediator: (RVTExchangeMediator * _Nonnull ) mediator;

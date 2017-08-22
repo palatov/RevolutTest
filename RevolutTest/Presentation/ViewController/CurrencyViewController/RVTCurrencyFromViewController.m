@@ -11,9 +11,6 @@
 
 @interface RVTCurrencyFromViewController () <UITextFieldDelegate>
 
-@property (strong, nonatomic) RVTExchangeMediator *mediator;
-@property (strong, nonatomic) RVTCurrency *currency;
-
 @property (weak, nonatomic) IBOutlet UILabel *currencyNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *currencyAmmountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *currencyRateLabel;
@@ -22,21 +19,9 @@
 
 @implementation RVTCurrencyFromViewController
 
--(instancetype)initWithCurrency:(RVTCurrency *)currency mediator: (RVTExchangeMediator *) mediator {
-    self = [super initWithNibName:@"CurrencyFromViewController" bundle: nil];
-    _currency = currency;
-    _mediator = mediator;
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.currencyNameLabel.text = self.currency.currencyId;
-    self.textField.delegate = self;
-    
-    [self.textField addTarget:self
-                       action:@selector(didEditTextField:)
-             forControlEvents:UIControlEventEditingChanged];
     
     [self.mediator addObserver:self
                     forKeyPath:@"currencyTo"
@@ -45,26 +30,6 @@
     
     [self.mediator addObserver:self
                     forKeyPath:@"exchangeIsPossible"
-                       options:NSKeyValueObservingOptionNew
-                       context:nil];
-    
-    [self.mediator addObserver:self
-                    forKeyPath:@"gbpBalance"
-                       options:NSKeyValueObservingOptionNew
-                       context:nil];
-    
-    [self.mediator addObserver:self
-                    forKeyPath:@"usdBalance"
-                       options:NSKeyValueObservingOptionNew
-                       context:nil];
-    
-    [self.mediator addObserver:self
-                    forKeyPath:@"eurBalance"
-                       options:NSKeyValueObservingOptionNew
-                       context:nil];
-    
-    [self.currency addObserver:self
-                    forKeyPath:@"lastUpdateTimestamp"
                        options:NSKeyValueObservingOptionNew
                        context:nil];
 }
@@ -82,22 +47,6 @@
                                    self.currency.symbol,
                                    currencyTo.symbol,
                                    rate];
-}
-
--(void)didEditTextField: (UITextField *)textField {
-    [self.mediator exchangeCurrencyWithAmmount:[textField.text doubleValue]];
-}
-
-// MARK: - UITextFieldDelegate
-
--(void)textFieldDidEndEditing:(UITextField *)textField {
-    [textField becomeFirstResponder];
-}
-
-// MARK: - CurrencyViewController
-
--(RVTCurrency *)currentCurrency {
-    return self.currency;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath

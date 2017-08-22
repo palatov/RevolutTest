@@ -10,7 +10,7 @@
 
 @implementation RVTCurrency
 
--(instancetype)initWith: (NSString *)currencyId
+- (instancetype)initWith: (NSString *)currencyId
               toEURRate: (double) toEur
               toUSDRate: (double) toUSD
               toGBPRate: (double) toGBP
@@ -19,8 +19,9 @@
     self.currencyId = currencyId;
     
     NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier: currencyId];
-    self.symbol = [NSString stringWithFormat:@"%@",[locale displayNameForKey:NSLocaleCurrencySymbol
-                                                                       value:currencyId]];
+    NSString *currencySymbol = [locale displayNameForKey:NSLocaleCurrencySymbol
+                                                   value:currencyId];
+    self.symbol = [NSString stringWithFormat:@"%@", currencySymbol];
     self.toEur = toEur;
     self.toGBP = toGBP;
     self.toUSD = toUSD;
@@ -28,7 +29,7 @@
     return self;
 }
 
--(double)rateForCurrencyWithId: (NSString *)currencyId {
+- (double)rateForCurrencyWithId: (NSString *)currencyId {
     if ([currencyId isEqualToString:@"GBP"]){
         return self.toGBP;
     } else if ([currencyId isEqualToString:@"EUR"]) {
@@ -36,15 +37,17 @@
     } else if ([currencyId isEqualToString:@"USD"]){
         return self.toUSD;
     } else {
+        
+        NSString *reason = [NSString stringWithFormat:@"Валюта с ID %@ не найдена",currencyId];
         NSException* exception = [NSException
                                   exceptionWithName:@""
-                                  reason: [NSString stringWithFormat:@"Валюта с ID %@ не найдена",currencyId]
+                                  reason:reason
                                   userInfo:nil];
         @throw exception;
     }
 }
 
--(void)updateWith: (RVTCurrency *)newModel {
+- (void)updateWith: (RVTCurrency *)newModel {
     self.toEur = newModel.toEur;
     self.toGBP = newModel.toGBP;
     self.toUSD = newModel.toUSD;

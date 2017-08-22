@@ -18,14 +18,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     /**
-     Initial currency balance 
+     Начальный баланс
      EUR: 100
      GBP: 100
      USD: 100
     */
     
-    // TODO: - добавить здесь проверку на первый запуск
-    [RVTAppSettingsService setupInitialCurrencyBalance];
+    // Проверка были ли валюты уже установлены в значение по умолчанию
+    if (![RVTAppSettingsService currenciesDetermined]) {
+        [RVTAppSettingsService setupInitialCurrencyBalance];
+    }
+    
     return YES;
 }
 

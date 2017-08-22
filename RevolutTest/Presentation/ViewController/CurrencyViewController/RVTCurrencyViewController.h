@@ -10,10 +10,17 @@
 #import "RVTCurrency.h"
 #import "RVTExchangeMediator.h"
 
+
+/**
+ Базовый контроллер валюты.
+ */
 @interface RVTCurrencyViewController : UIViewController
 
+// Валюта контроллера
 @property (readonly, strong, nonatomic) RVTCurrency *currency;
+// Посредник для обмена.
 @property (readonly, strong, nonatomic) RVTExchangeMediator *mediator;
--(instancetype)initWithCurrency:(RVTCurrency *)currency mediator: (RVTExchangeMediator *) mediator;
+
+- (instancetype)initWithCurrency:(RVTCurrency *)currency mediator: (RVTExchangeMediator *) mediator;
 
 @end

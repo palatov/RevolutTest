@@ -11,6 +11,9 @@
 #import "RVTCurrency.h"
 #import "RVTCurrencyViewController.h"
 
+/**
+ Контроллер валюты из которой производится обмен.
+ */
 @interface RVTCurrencyFromViewController : RVTCurrencyViewController
 
 @end

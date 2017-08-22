@@ -15,6 +15,8 @@
 
 @implementation RVTCurrencyPageViewController
 
+#pragma mark - Public
+
 - (instancetype _Nonnull )initWithMediator: (RVTExchangeMediator * _Nonnull ) mediator {
     self = [super initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                     navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
@@ -23,6 +25,7 @@
     return self;
 }
 
+#pragma mark - Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad]; 
@@ -30,9 +33,10 @@
     self.delegate = self;
 }
 
-// MARK: - UIPageViewControllerDataSource
+#pragma mark - UIPageViewControllerDataSource
 
--(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+      viewControllerBeforeViewController:(UIViewController *)viewController {
     
     NSUInteger index = [self.controllers indexOfObject:viewController];
     NSUInteger maxIndex = self.controllers.count - 1;
@@ -44,7 +48,8 @@
     }
 }
 
--(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+       viewControllerAfterViewController:(UIViewController *)viewController {
     
     NSUInteger index = [self.controllers indexOfObject:viewController];
     NSUInteger maxIndex = self.controllers.count - 1;
@@ -56,17 +61,17 @@
     }
 }
 
--(NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
     return self.controllers.count; 
 }
 
--(NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
     return 0;
 }
 
-// MARK: - UIPageViewConrtollerDelegate
+#pragma mark - UIPageViewControllerDelegate
 
--(void)pageViewController:(UIPageViewController *)pageViewController
+- (void)pageViewController:(UIPageViewController *)pageViewController
 willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers {
     self.currentController = (RVTCurrencyViewController *)pendingViewControllers.firstObject;
 }

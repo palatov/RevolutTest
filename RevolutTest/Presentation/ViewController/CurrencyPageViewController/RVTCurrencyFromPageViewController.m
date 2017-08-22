@@ -15,6 +15,8 @@
 
 @implementation RVTCurrencyFromPageViewController
 
+#pragma mark - Lifecycle
+
 -(void)viewDidLoad {
     [super viewDidLoad];
     
@@ -33,6 +35,8 @@
                   completion:nil];
 }
 
+#pragma mark - UIPageViewControllerDelegate
+
 - (void)pageViewController:(UIPageViewController *)pageViewController
         didFinishAnimating:(BOOL)finished
    previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers
@@ -40,11 +44,6 @@
     
     if (completed) {
         self.mediator.currencyFrom = self.currentController.currency;
-//        RVTCurrencyFromViewController *previousController = (RVTCurrencyFromViewController *)previousViewControllers.firstObject;
-//        RVTCurrencyFromViewController *currentController = (RVTCurrencyFromViewController *)self.currentController;
-        // currentController.textField.text = previousController.textField.text;
-        // previousController.textField.text = nil;
-        // [currentController.textField performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0];
     } else {
         self.currentController = nil;
     }

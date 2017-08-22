@@ -11,28 +11,32 @@
 
 @implementation RVTAppSettingsService
 
-// Set default currency values
-+(void)setupInitialCurrencyBalance {
++ (BOOL)currenciesDetermined {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    return [userDefaults objectForKey:USD] != nil &&
+            [userDefaults objectForKey:GBP] != nil &&
+            [userDefaults objectForKey:EUR] != nil;
+}
+
++ (void)setupInitialCurrencyBalance {
     [[NSUserDefaults standardUserDefaults] setDouble:100 forKey:USD];
     [[NSUserDefaults standardUserDefaults] setDouble:100 forKey:GBP];
     [[NSUserDefaults standardUserDefaults] setDouble:100 forKey:EUR];
 }
 
-// Get current balance
-+(double)getGBPBalance {
++ (double)getGBPBalance {
     return [[NSUserDefaults standardUserDefaults] doubleForKey:GBP];
 }
 
-+(double)getUSDBalance {
++ (double)getUSDBalance {
     return [[NSUserDefaults standardUserDefaults] doubleForKey:USD];
 }
 
-+(double)getEURBalance {
++ (double)getEURBalance {
     return [[NSUserDefaults standardUserDefaults] doubleForKey:EUR];
 }
 
-// Set new balance
-+(void)setNewAmount:(double)newAmount forCurrency:(NSString *)currencyId {
++ (void)setNewAmount:(double)newAmount forCurrency:(NSString *)currencyId {
     [[NSUserDefaults standardUserDefaults] setDouble:newAmount forKey:currencyId];
 }
 

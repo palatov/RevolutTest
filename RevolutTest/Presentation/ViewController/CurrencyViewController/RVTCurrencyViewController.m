@@ -17,6 +17,8 @@
 
 @implementation RVTCurrencyViewController
 
+#pragma mark - Public
+
 -(instancetype)initWithCurrency:(RVTCurrency *)currency mediator: (RVTExchangeMediator *) mediator {
     NSString *nibName = NSStringFromClass([self class]);
     self = [super initWithNibName:nibName bundle:nil];
@@ -24,6 +26,8 @@
     _mediator = mediator;
     return self;
 }
+
+#pragma mark - Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];

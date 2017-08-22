@@ -8,6 +8,7 @@
 
 #import "RVTExchangeMediator.h"
 #import "RVTAppSettingsService.h"
+#import "RVTConstants.h"
 
 @interface RVTExchangeMediator ()
 
@@ -20,7 +21,9 @@
 
 @implementation RVTExchangeMediator
 
--(instancetype)initWithCurrencies: (NSArray<RVTCurrency *> *)currencies {
+#pragma mark - Public
+
+- (instancetype)initWithCurrencies: (NSArray<RVTCurrency *> *)currencies {
     self = [super init];
     _currencies = currencies;
     _currencyFrom = currencies.firstObject;
@@ -31,7 +34,7 @@
     return self; 
 }
 
--(void)updateCurrencies:(NSArray<RVTCurrency *> *)currencies {
+- (void)updateCurrencies:(NSArray<RVTCurrency *> *)currencies {
     for (int i = 0; i < currencies.count; i++) {
         RVTCurrency *newModel = currencies[i];
         RVTCurrency *currentModel = self.currencies[i];
@@ -41,17 +44,7 @@
     }
 }
 
--(void)setCurrencyFrom:(RVTCurrency *)currencyFrom {
-    _currencyFrom = currencyFrom;
-    [self exchangeCurrencyWithAmmount:self.amountToExchange];
-}
-
--(void)setCurrencyTo:(RVTCurrency *)currencyTo {
-    _currencyTo = currencyTo;
-    [self exchangeCurrencyWithAmmount:self.amountToExchange];
-}
-
--(void)exchangeCurrencyWithAmmount:(double) amount {
+- (void)exchangeCurrencyWithAmmount:(double) amount {
     self.amountToExchange = amount;
     self.exchangeIsPossible = [self exchangeIsPossibleForAmount: amount];
     
@@ -60,35 +53,7 @@
     self.exchangedAmount = exchangedAmount;
 }
 
--(BOOL)exchangeIsPossibleForAmount: (double) amount {
-    if ([self.currencyFrom.currencyId isEqualToString:@"USD"]) {
-        return amount <= self.usdBalance;
-    } else if ([self.currencyFrom.currencyId isEqualToString:@"EUR"]) {
-        return amount <= self.eurBalance;
-    } else if ([self.currencyFrom.currencyId isEqualToString:@"GBP"]) {
-        return amount <= self.gbpBalance;
-    } else {
-        return false;
-    }
-}
-
--(double) balanceForCurrencyWithId: (NSString *)currencyId {
-    if ([currencyId isEqualToString:@"GBP"]){
-        return self.gbpBalance;
-    } else if ([currencyId isEqualToString:@"EUR"]) {
-        return self.eurBalance;
-    } else if ([currencyId isEqualToString:@"USD"]){
-        return self.usdBalance;
-    } else {
-        NSException* exception = [NSException
-                                    exceptionWithName:@""
-                                    reason: [NSString stringWithFormat:@"Валюта с ID %@ не найдена",currencyId]
-                                    userInfo:nil];
-        @throw exception;
-    }
-}
-
--(void)saveExchangeResult {
+- (void)saveExchangeResult {
     
     if ([self.currencyTo.currencyId isEqualToString:self.currencyFrom.currencyId]) {
         return ;
@@ -106,7 +71,49 @@
     self.eurBalance = [RVTAppSettingsService getEURBalance];
     self.usdBalance = [RVTAppSettingsService getUSDBalance];
     
-     self.exchangeIsPossible = [self exchangeIsPossibleForAmount: self.amountToExchange];
+    self.exchangeIsPossible = [self exchangeIsPossibleForAmount: self.amountToExchange];
 }
+
+- (double) balanceForCurrencyWithId: (NSString *)currencyId {
+    if ([currencyId isEqualToString:GBP]){
+        return self.gbpBalance;
+    } else if ([currencyId isEqualToString:EUR]) {
+        return self.eurBalance;
+    } else if ([currencyId isEqualToString:USD]){
+        return self.usdBalance;
+    } else {
+        NSException* exception = [NSException exceptionWithName:@""
+                                                         reason: [NSString stringWithFormat:@"Валюта с ID %@ не найдена",currencyId]
+                                                       userInfo:nil];
+        @throw exception;
+    }
+}
+
+#pragma mark - Custom Accessors
+
+- (void)setCurrencyFrom:(RVTCurrency *)currencyFrom {
+    _currencyFrom = currencyFrom;
+    [self exchangeCurrencyWithAmmount:self.amountToExchange];
+}
+
+- (void)setCurrencyTo:(RVTCurrency *)currencyTo {
+    _currencyTo = currencyTo;
+    [self exchangeCurrencyWithAmmount:self.amountToExchange];
+}
+
+#pragma mark - Private
+
+- (BOOL)exchangeIsPossibleForAmount: (double) amount {
+    if ([self.currencyFrom.currencyId isEqualToString:USD]) {
+        return amount <= self.usdBalance;
+    } else if ([self.currencyFrom.currencyId isEqualToString:EUR]) {
+        return amount <= self.eurBalance;
+    } else if ([self.currencyFrom.currencyId isEqualToString:GBP]) {
+        return amount <= self.gbpBalance;
+    } else {
+        return NO;
+    }
+}
+
 
 @end

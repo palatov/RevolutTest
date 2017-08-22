@@ -15,6 +15,8 @@
 
 @implementation RVTCurrencyToPageViewController
 
+#pragma mark - Lifecycle
+
 -(void)viewDidLoad {
     [super viewDidLoad];
     
@@ -32,6 +34,8 @@
                     animated:YES
                   completion:nil];
 }
+
+#pragma mark - UIPageViewControllerDelegate
 
 - (void)pageViewController:(UIPageViewController *)pageViewController
         didFinishAnimating:(BOOL)finished

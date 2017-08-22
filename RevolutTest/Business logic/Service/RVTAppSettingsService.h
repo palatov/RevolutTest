@@ -8,17 +8,38 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ Cервис для работы c настройками пользователя.
+ */
 @interface RVTAppSettingsService : NSObject
 
-// Set default currency values
-+(void)setupInitialCurrencyBalance;
+/**
+ Проверка были ли установлены в первый раз начальные значения валют.
 
-// Get current balance
-+(double)getGBPBalance;
-+(double)getUSDBalance;
-+(double)getEURBalance;
+ @return Флаг о наличии все трех валют.
+ */
++ (BOOL)currenciesDetermined;
 
-// Set new balance
-+(void)setNewAmount: (double) newAmount forCurrency: (NSString *)currencyId;
+/**
+ Установить начальные значения валют.
+ */
++ (void)setupInitialCurrencyBalance;
+
+/**
+ Получить текущий баланс одной из валют.
+
+ @return Баланс
+ */
++ (double)getGBPBalance;
++ (double)getUSDBalance;
++ (double)getEURBalance;
+
+/**
+ Сохранить новый баланс одной из валют. 
+
+ @param newAmount Новый баланс
+ @param currencyId id валюты
+ */
++ (void)setNewAmount: (double) newAmount forCurrency: (NSString *)currencyId;
 
 @end

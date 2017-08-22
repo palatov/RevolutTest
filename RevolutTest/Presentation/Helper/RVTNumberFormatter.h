@@ -8,8 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ Помщник для форматирования чисел.
+ */
 @interface RVTNumberFormatter : NSObject
 
-+(NSString *)stringFromDouble: (double) doubleValue;
+/**
+ Переводит число с точкой в строку.
+
+ @param doubleValue Число с точкой
+ @return Строка
+ */
++ (NSString *)stringFromDouble: (double) doubleValue;
 
 @end

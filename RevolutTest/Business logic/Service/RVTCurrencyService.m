@@ -26,6 +26,8 @@
 
 static NSString * const ecbRates = @"http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
 
+# pragma mark - Public
+
 - (instancetype)initWithCompletionBlock: (completionBlock) block errorHandler: (errorHandler) handler {
     self = [super init];
     _completionBlock = block;
@@ -49,49 +51,20 @@ static NSString * const ecbRates = @"http://www.ecb.europa.eu/stats/eurofxref/eu
     }];
 }
 
-- (void)downloadDataFromURL:(NSURL *)url withCompletionHandler:(void (^)(NSData *))completionHandler{
-  
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-    
-    __weak RVTCurrencyService *weakSelf = self;
-    NSURLSessionDataTask *task = [session dataTaskWithURL:url
-                                        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (error != nil) {
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                weakSelf.errorHandler(error);
-            }];
-        }
-        else{
-            NSInteger HTTPStatusCode = [(NSHTTPURLResponse *)response statusCode];
-            if (HTTPStatusCode != 200) {
-                NSLog(@"HTTP status code = %ld", (long)HTTPStatusCode);
-            }
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                completionHandler(data);
-            }];
-        }
-    }];
-    
-    [task resume];
-}
+#pragma mark - NSXMLParserDelegate
 
-// MARK: - NSXMLParserDelegate
-
--(void)parser:(NSXMLParser *)parser
+- (void)parser:(NSXMLParser *)parser
 didStartElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI
-qualifiedName:(NSString *)qName
-   attributes:(NSDictionary<NSString *,NSString *> *)attributeDict {
+  namespaceURI:(NSString *)namespaceURI
+ qualifiedName:(NSString *)qName
+    attributes:(NSDictionary<NSString *,NSString *> *)attributeDict {
     
     NSString *currency = attributeDict[@"currency"];
     
     if ([elementName isEqualToString:@"Cube"]) {
-       
         if ([currency  isEqual: USD]) {
             self.eurToUsdRate = [attributeDict[@"rate"] doubleValue];
         }
-        
         if ([currency  isEqual: GBP]) {
             self.eurToGbpRate = [attributeDict[@"rate"] doubleValue];
         }
@@ -99,7 +72,7 @@ qualifiedName:(NSString *)qName
 }
 
 
--(void)parserDidEndDocument:(NSXMLParser *)parser {
+- (void)parserDidEndDocument:(NSXMLParser *)parser {
     [self scheduleNextCurrencyUpdate];
     
     if (self.eurToUsdRate != 0 && self.eurToGbpRate != 0) {
@@ -119,7 +92,7 @@ qualifiedName:(NSString *)qName
                                                toGBPRate:1.0
                                      lastUpdateTimestamp:lastUpdateTimestamp];
         
-        RVTCurrency *eur = [[RVTCurrency alloc] initWith:GBP
+        RVTCurrency *eur = [[RVTCurrency alloc] initWith:EUR
                                                toEURRate:1.0
                                                toUSDRate:self.eurToUsdRate
                                                toGBPRate:self.eurToGbpRate
@@ -134,14 +107,43 @@ qualifiedName:(NSString *)qName
     }
 }
 
+- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
+    self.errorHandler(parseError);
+}
+
+# pragma mark - Private
+
+- (void)downloadDataFromURL:(NSURL *)url withCompletionHandler:(void (^)(NSData *))completionHandler{
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+    
+    __weak RVTCurrencyService *weakSelf = self;
+    
+    NSURLSessionDataTask *task = [session dataTaskWithURL:url
+                                        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                            if (error != nil) {
+                                                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                                                    weakSelf.errorHandler(error);
+                                                }];
+                                            }
+                                            else{
+                                                NSInteger HTTPStatusCode = [(NSHTTPURLResponse *)response statusCode];
+                                                if (HTTPStatusCode != 200) {
+                                                    NSLog(@"HTTP status code = %ld", (long)HTTPStatusCode);
+                                                }
+                                                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                                                    completionHandler(data);
+                                                }];
+                                            }
+    }];
+    [task resume];
+}
+
 -(void)scheduleNextCurrencyUpdate {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self updateCurrencies];
     });
-}
-
--(void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-    self.errorHandler(parseError);
 }
 
 @end

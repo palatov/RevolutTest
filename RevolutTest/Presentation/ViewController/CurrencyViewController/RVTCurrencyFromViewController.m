@@ -20,6 +20,8 @@
 
 @implementation RVTCurrencyFromViewController
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.currencyNameLabel.text = self.currency.currencyId;
@@ -41,14 +43,7 @@
     [self updateRateLabel];
 }
 
--(void)updateRateLabel {
-    RVTCurrency *currencyTo = self.mediator.currencyTo;
-    NSString *rate = [RVTNumberFormatter stringFromDouble: [currencyTo rateForCurrencyWithId:self.currency.currencyId]];
-    self.currencyRateLabel.text = [NSString stringWithFormat:@"%@1 = %@%@",
-                                   self.currency.symbol,
-                                   currencyTo.symbol,
-                                   rate];
-}
+#pragma mark - KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object change:(NSDictionary *)change
@@ -86,6 +81,26 @@
     if ([keyPath isEqualToString:lastUpdateTimestamp]) {
         [self updateRateLabel];
     }
+}
+
+- (void)dealloc {
+    [self.mediator removeObserver:self forKeyPath:gbpBalance];
+    [self.mediator removeObserver:self forKeyPath:usdBalance];
+    [self.mediator removeObserver:self forKeyPath:eurBalance];
+    [self.mediator removeObserver:self forKeyPath:lastUpdateTimestamp];
+    [self.mediator removeObserver:self forKeyPath:currencyTo];
+    [self.mediator removeObserver:self forKeyPath:exchangeIsPossible];
+}
+
+#pragma mark - Private
+
+-(void)updateRateLabel {
+    RVTCurrency *currencyTo = self.mediator.currencyTo;
+    NSString *rate = [RVTNumberFormatter stringFromDouble: [currencyTo rateForCurrencyWithId:self.currency.currencyId]];
+    self.currencyRateLabel.text = [NSString stringWithFormat:@"%@1 = %@%@",
+                                   self.currency.symbol,
+                                   currencyTo.symbol,
+                                   rate];
 }
 
 @end

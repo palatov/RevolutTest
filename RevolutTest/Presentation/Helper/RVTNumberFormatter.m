@@ -10,7 +10,7 @@
 
 @implementation RVTNumberFormatter
 
-+(NSString *)stringFromDouble: (double) doubleValue {
++ (NSString *)stringFromDouble: (double) doubleValue {
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter  setNumberStyle:NSNumberFormatterDecimalStyle];
     [formatter  setMaximumFractionDigits:2];

@@ -23,22 +23,23 @@
 
 @end
 
-/// Держать модели здесь
-
 @implementation RVTCurrencyExchangeViewController
+
+#pragma mark - Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.currencyService = [[RVTCurrencyService alloc] initWithCompletionBlock:^(NSArray<RVTCurrency *> *currencies) {
+    self.currencyService = [[RVTCurrencyService alloc]
+                            initWithCompletionBlock:^(NSArray<RVTCurrency *> *currencies) {
         [self setupExchangeMediator:currencies];
         if (self.currencyFromPageViewController == nil && self.currencyToPageViewController == nil) {
             [self setupPageViewControllers];
             [self setupTextField];
         }
-        [self.navigationItem.rightBarButtonItem setEnabled: TRUE];
+        [self.navigationItem.rightBarButtonItem setEnabled: YES];
     } errorHandler:^(NSError *error) {
-        [self.navigationItem.rightBarButtonItem setEnabled: FALSE];
+        [self.navigationItem.rightBarButtonItem setEnabled: NO];
         [self presentError:error];
     }];
     
@@ -54,25 +55,12 @@
                                                 style:UIBarButtonItemStylePlain
                                                 target:self
                                                 action:@selector(performExchange:)]];
-     [self.navigationItem.rightBarButtonItem setEnabled: FALSE];
+     [self.navigationItem.rightBarButtonItem setEnabled: NO];
 }
 
--(void)presentError: (NSError *) error {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ошибка"
-                                                                   message: [NSString stringWithFormat:@"%@", [error localizedDescription]]
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ок"
-                                                       style:UIAlertActionStyleDefault
-                                                     handler:^(UIAlertAction * _Nonnull action) {
-                                                          [self.currencyService updateCurrencies];
-                                                     }];
-    
-    [alert addAction:okAction];
-    [self presentViewController:alert animated:TRUE completion:nil];
-}
+#pragma mark - Private 
 
--(void)setupExchangeMediator: (NSArray<RVTCurrency *> *) currencies {
+- (void)setupExchangeMediator: (NSArray<RVTCurrency *> *) currencies {
     if (!self.mediator) {
         self.mediator = [[RVTExchangeMediator alloc] initWithCurrencies:currencies];
         [self.mediator addObserver:self forKeyPath:exchangeIsPossible options:NSKeyValueObservingOptionNew context:nil];
@@ -81,26 +69,41 @@
     }
 }
 
--(void)setupPageViewControllers {
-    self.currencyFromPageViewController = [[RVTCurrencyFromPageViewController alloc] initWithMediator: self.mediator];
+- (void)setupPageViewControllers {
+    self.currencyFromPageViewController = [[RVTCurrencyFromPageViewController alloc]
+                                           initWithMediator: self.mediator];
     
     [self addPageViewController:self.currencyFromPageViewController
                 toContainerView:self.firstContainerView];
     
-    self.currencyToPageViewController = [[RVTCurrencyToPageViewController alloc] initWithMediator: self.mediator];
+    self.currencyToPageViewController = [[RVTCurrencyToPageViewController alloc]
+                                         initWithMediator: self.mediator];
     
     [self addPageViewController:self.currencyToPageViewController
                 toContainerView:self.secondContainerView];
 }
 
--(void)setupTextField {
+- (void)addPageViewController: (UIPageViewController *)pageViewController
+              toContainerView: (UIView *) containerView {
+    [self addChildViewController:pageViewController];
+    [pageViewController didMoveToParentViewController:self];
+    [containerView addSubview:pageViewController.view];
+    pageViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+    NSArray *arr = @[ [pageViewController.view.leadingAnchor constraintEqualToAnchor:containerView.leadingAnchor],
+                      [pageViewController.view.trailingAnchor constraintEqualToAnchor:containerView.trailingAnchor],
+                      [pageViewController.view.topAnchor constraintEqualToAnchor:containerView.topAnchor],
+                      [pageViewController.view.bottomAnchor constraintEqualToAnchor:containerView.bottomAnchor]];
+    [NSLayoutConstraint activateConstraints:arr];
+}
+
+- (void)setupTextField {
     UITextField *textField = [UITextField new];
     textField.textColor = [UIColor whiteColor];
     textField.keyboardType = UIKeyboardTypeNumberPad;
     textField.backgroundColor = [UIColor blackColor];
     textField.textAlignment = NSTextAlignmentRight;
     textField.font = [UIFont systemFontOfSize:25.0];
-    textField.translatesAutoresizingMaskIntoConstraints = FALSE;
+    textField.translatesAutoresizingMaskIntoConstraints = NO;
     [self.firstContainerView addSubview:textField];
     NSArray * arr = @[[textField.trailingAnchor constraintEqualToAnchor:self.firstContainerView.trailingAnchor constant: -16.0],
                       [textField.topAnchor constraintEqualToAnchor:self.firstContainerView.topAnchor constant: 16.0],
@@ -114,21 +117,27 @@
         forControlEvents:UIControlEventEditingChanged];
 }
 
--(void)didEditTextField: (UITextField *)textField {
-    [self.mediator exchangeCurrencyWithAmmount:[textField.text doubleValue]];
+
+- (void)presentError: (NSError *) error {
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:@"Ошибка"
+                                message: [NSString stringWithFormat:@"%@", [error localizedDescription]]
+                                preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction
+                               actionWithTitle:@"Ок"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * _Nonnull action) {
+                                   [self.currencyService updateCurrencies];
+                               }];
+    
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)addPageViewController: (UIPageViewController *)pageViewController
-              toContainerView: (UIView *) containerView {
-    [self addChildViewController:pageViewController];
-    [pageViewController didMoveToParentViewController:self];
-    [containerView addSubview:pageViewController.view];
-    pageViewController.view.translatesAutoresizingMaskIntoConstraints = false;
-    NSArray *arr = @[ [pageViewController.view.leadingAnchor constraintEqualToAnchor:containerView.leadingAnchor],
-                      [pageViewController.view.trailingAnchor constraintEqualToAnchor:containerView.trailingAnchor],
-                      [pageViewController.view.topAnchor constraintEqualToAnchor:containerView.topAnchor],
-                      [pageViewController.view.bottomAnchor constraintEqualToAnchor:containerView.bottomAnchor]];
-    [NSLayoutConstraint activateConstraints:arr];
+
+- (void)didEditTextField: (UITextField *)textField {
+    [self.mediator exchangeCurrencyWithAmmount:[textField.text doubleValue]];
 }
 
 - (void)keyboardDidShow: (NSNotification *) notification{
@@ -138,6 +147,14 @@
     self.keyboardSpaceholderDefaultHeight.active = NO; 
     [self.keyboardSpaceholder.heightAnchor constraintEqualToConstant:keyboardFrameBeginRect.size.height].active = YES;
 }
+
+#pragma mark - Selector
+
+-(void)performExchange:(id)sender {
+    [self.mediator saveExchangeResult];
+}
+
+#pragma mark - KVO 
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object change:(NSDictionary *)change
@@ -149,8 +166,8 @@
     }
 }
 
--(void)performExchange:(id)sender {
-    [self.mediator saveExchangeResult];
+- (void)dealloc {
+    [self.mediator removeObserver:self forKeyPath:exchangeIsPossible];
 }
 
 @end

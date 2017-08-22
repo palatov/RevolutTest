@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ Константы. 
+ */
 @interface RVTConstants : NSObject
 
 extern NSString * const GBP;

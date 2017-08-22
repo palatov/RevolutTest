@@ -9,6 +9,9 @@
 #import "RVTCurrencyPageViewController.h"
 #import "RVTExchangeMediator.h"
 
+/**
+ Контроллер отвечающий за смену валюты в которую будет производится обмен.
+ */
 @interface RVTCurrencyToPageViewController : RVTCurrencyPageViewController
 
 @end

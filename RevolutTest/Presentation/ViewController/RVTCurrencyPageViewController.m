@@ -1,20 +1,21 @@
 //
-//  CurrencyPageViewController.m
+//  RVTCurrencyPageViewController.m
 //  RevolutTest
 //
 //  Created by Nikita Timonin on 13/08/2017.
 //  Copyright © 2017 Timonin. All rights reserved.
 //
 
-#import "CurrencyPageViewController.h"
+#import "RVTCurrencyPageViewController.h"
+#import "RVTCurrency.h"
 
-@interface CurrencyPageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface RVTCurrencyPageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 @end
 
-@implementation CurrencyPageViewController
+@implementation RVTCurrencyPageViewController
 
-- (instancetype _Nonnull )initWithMediator: (ExchangeMediator * _Nonnull ) mediator {
+- (instancetype _Nonnull )initWithMediator: (RVTExchangeMediator * _Nonnull ) mediator {
     self = [super initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                     navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                   options:nil];
@@ -67,7 +68,7 @@
 
 -(void)pageViewController:(UIPageViewController *)pageViewController
 willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers {
-    self.currentController = (id<CurrencyViewController>)pendingViewControllers.firstObject;
+    self.currentController = (id<RVTCurrencyViewController>)pendingViewControllers.firstObject;
 }
 
 @end

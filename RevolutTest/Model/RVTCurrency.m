@@ -1,14 +1,14 @@
 //
-//  Currency.m
+//  RVTCurrency.m
 //  RevolutTest
 //
 //  Created by Nikita Timonin on 15/08/2017.
 //  Copyright © 2017 Timonin. All rights reserved.
 //
 
-#import "Currency.h"
+#import "RVTCurrency.h"
 
-@implementation Currency
+@implementation RVTCurrency
 
 -(instancetype)initWith: (NSString *)currencyId
               toEURRate: (double) toEur
@@ -44,7 +44,7 @@
     }
 }
 
--(void)updateWith: (Currency *)newModel {
+-(void)updateWith: (RVTCurrency *)newModel {
     self.toEur = newModel.toEur;
     self.toGBP = newModel.toGBP;
     self.toUSD = newModel.toUSD;

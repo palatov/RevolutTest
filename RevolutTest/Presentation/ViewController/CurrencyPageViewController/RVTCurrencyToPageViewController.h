@@ -6,9 +6,9 @@
 //  Copyright © 2017 Timonin. All rights reserved.
 //
 
-#import "CurrencyPageViewController.h"
-#import "ExchangeMediator.h"
+#import "RVTCurrencyPageViewController.h"
+#import "RVTExchangeMediator.h"
 
-@interface CurrencyToPageViewController : CurrencyPageViewController
+@interface RVTCurrencyToPageViewController : RVTCurrencyPageViewController
 
 @end

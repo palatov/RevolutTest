@@ -1,14 +1,14 @@
 //
-//  AppSettingsService.m
+//  RVTAppSettingsService.m
 //  RevolutTest
 //
 //  Created by Nikita Timonin on 12/08/2017.
 //  Copyright © 2017 Timonin. All rights reserved.
 //
 
-#import "AppSettingsService.h"
+#import "RVTAppSettingsService.h"
 
-@implementation AppSettingsService
+@implementation RVTAppSettingsService
 
 static NSString *lastUpdateDate = @"lastUpdateDate";
 static NSString *usd = @"USD";

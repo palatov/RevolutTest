@@ -1,15 +1,15 @@
 //
-//  ExchangeMediator.m
+//  RVTExchangeMediator.m
 //  RevolutTest
 //
 //  Created by Nikita Timonin on 16/08/2017.
 //  Copyright © 2017 Timonin. All rights reserved.
 //
 
-#import "ExchangeMediator.h"
-#import "AppSettingsService.h"
+#import "RVTExchangeMediator.h"
+#import "RVTAppSettingsService.h"
 
-@interface ExchangeMediator ()
+@interface RVTExchangeMediator ()
 
 @property (nonatomic) double amountToExchange;
 @property (nonatomic) double gbpBalance;
@@ -18,35 +18,35 @@
 
 @end
 
-@implementation ExchangeMediator
+@implementation RVTExchangeMediator
 
--(instancetype)initWithCurrencies: (NSArray<Currency *> *)currencies {
+-(instancetype)initWithCurrencies: (NSArray<RVTCurrency *> *)currencies {
     self = [super init];
     _currencies = currencies;
     _currencyFrom = currencies.firstObject;
     _currencyTo = currencies.firstObject;
-    _gbpBalance = [AppSettingsService getGBPBalance];
-    _eurBalance = [AppSettingsService getEURBalance];
-    _usdBalance = [AppSettingsService getUSDBalance];
+    _gbpBalance = [RVTAppSettingsService getGBPBalance];
+    _eurBalance = [RVTAppSettingsService getEURBalance];
+    _usdBalance = [RVTAppSettingsService getUSDBalance];
     return self; 
 }
 
--(void)updateCurrencies:(NSArray<Currency *> *)currencies {
+-(void)updateCurrencies:(NSArray<RVTCurrency *> *)currencies {
     for (int i = 0; i < currencies.count; i++) {
-        Currency *newModel = currencies[i];
-        Currency *currentModel = self.currencies[i];
+        RVTCurrency *newModel = currencies[i];
+        RVTCurrency *currentModel = self.currencies[i];
         if ([currentModel.currencyId isEqualToString:newModel.currencyId]) {
             [currentModel updateWith:newModel];
         }
     }
 }
 
--(void)setCurrencyFrom:(Currency *)currencyFrom {
+-(void)setCurrencyFrom:(RVTCurrency *)currencyFrom {
     _currencyFrom = currencyFrom;
     [self exchangeCurrencyWithAmmount:self.amountToExchange];
 }
 
--(void)setCurrencyTo:(Currency *)currencyTo {
+-(void)setCurrencyTo:(RVTCurrency *)currencyTo {
     _currencyTo = currencyTo;
     [self exchangeCurrencyWithAmmount:self.amountToExchange];
 }
@@ -96,15 +96,15 @@
     
     double fromBalance = [self balanceForCurrencyWithId:self.currencyFrom.currencyId];
     double newFromBalance = fromBalance - self.amountToExchange;
-    [AppSettingsService setNewAmount:newFromBalance forCurrency:self.currencyFrom.currencyId];
+    [RVTAppSettingsService setNewAmount:newFromBalance forCurrency:self.currencyFrom.currencyId];
     
     double toBalance = [self balanceForCurrencyWithId:self.currencyTo.currencyId];
     double newToBalance = toBalance + self.exchangedAmount;
-    [AppSettingsService setNewAmount:newToBalance forCurrency:self.currencyTo.currencyId];
+    [RVTAppSettingsService setNewAmount:newToBalance forCurrency:self.currencyTo.currencyId];
     
-    self.gbpBalance = [AppSettingsService getGBPBalance];
-    self.eurBalance = [AppSettingsService getEURBalance];
-    self.usdBalance = [AppSettingsService getUSDBalance];
+    self.gbpBalance = [RVTAppSettingsService getGBPBalance];
+    self.eurBalance = [RVTAppSettingsService getEURBalance];
+    self.usdBalance = [RVTAppSettingsService getUSDBalance];
     
      self.exchangeIsPossible = [self exchangeIsPossibleForAmount: self.amountToExchange];
 }

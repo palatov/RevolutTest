@@ -1,5 +1,5 @@
 //
-//  Currency.h
+//  RVTCurrency.h
 //  RevolutTest
 //
 //  Created by Nikita Timonin on 15/08/2017.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Currency : NSObject
+@interface RVTCurrency : NSObject
 
 @property (strong, nonatomic ) NSString *currencyId;
 @property (nonatomic) double toEur;
@@ -23,7 +23,7 @@
               toGBPRate: (double) toGBP
     lastUpdateTimestamp: (double) timestamp;
 
--(void)updateWith: (Currency *)newModel;
+-(void)updateWith: (RVTCurrency *)newModel;
 -(double)rateForCurrencyWithId: (NSString *)currencyId;
 
 @end

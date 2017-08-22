@@ -1,5 +1,5 @@
 //
-//  AppSettingsService.h
+//  RVTAppSettingsService.h
 //  RevolutTest
 //
 //  Created by Nikita Timonin on 12/08/2017.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface AppSettingsService : NSObject
+@interface RVTAppSettingsService : NSObject
 
 // Set default currency values
 +(void)setupInitialCurrencyBalance;

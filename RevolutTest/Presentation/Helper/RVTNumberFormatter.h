@@ -1,5 +1,5 @@
 //
-//  CurrencyViewController.h
+//  RVTNumberFormatter.h
 //  RevolutTest
 //
 //  Created by Nikita Timonin on 17/08/2017.
@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Currency.h"
 
-@protocol CurrencyViewController <NSObject>
--(Currency *)currency;
+@interface RVTNumberFormatter : NSObject
+
++(NSString *)stringFromDouble: (double) doubleValue;
+
 @end

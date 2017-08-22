@@ -1,29 +1,31 @@
 //
-//  CurrencyFromViewController.m
+//  RVTCurrencyToViewController.m
 //  RevolutTest
 //
 //  Created by Nikita Timonin on 16/08/2017.
 //  Copyright © 2017 Timonin. All rights reserved.
 //
 
-#import "CurrencyFromViewController.h"
-#import "NumberFormatter.h"
+#import "RVTCurrencyToViewController.h"
+#import "RVTCurrency.h"
+#import "RVTNumberFormatter.h"
 
-@interface CurrencyFromViewController () <UITextFieldDelegate>
+@interface RVTCurrencyToViewController ()
 
-@property (strong, nonatomic) ExchangeMediator *mediator;
-@property (strong, nonatomic) Currency *currency;
+@property (strong, nonatomic) RVTExchangeMediator *mediator;
+@property (strong, nonatomic) RVTCurrency *currency;
 
 @property (weak, nonatomic) IBOutlet UILabel *currencyNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *exchangedAmmountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *currencyAmmountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *currencyRateLabel;
 
 @end
 
-@implementation CurrencyFromViewController
+@implementation RVTCurrencyToViewController
 
--(instancetype)initWithCurrency:(Currency *)currency mediator: (ExchangeMediator *) mediator {
-    self = [super initWithNibName:@"CurrencyFromViewController" bundle: nil];
+-(instancetype)initWithCurrency:(RVTCurrency *)currency mediator: (RVTExchangeMediator *) mediator {
+    self = [super initWithNibName:@"CurrencyToViewController" bundle: nil];
     _currency = currency;
     _mediator = mediator;
     return self;
@@ -32,19 +34,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.currencyNameLabel.text = self.currency.currencyId;
-    self.textField.delegate = self;
-    
-    [self.textField addTarget:self
-                       action:@selector(didEditTextField:)
-             forControlEvents:UIControlEventEditingChanged];
-    
+  
     [self.mediator addObserver:self
-                    forKeyPath:@"currencyTo"
+                    forKeyPath:@"exchangedAmount"
                        options:NSKeyValueObservingOptionNew
-                       context:nil];
+                       context: nil];
     
     [self.mediator addObserver:self
-                    forKeyPath:@"exchangeIsPossible"
+                    forKeyPath:@"currencyFrom"
                        options:NSKeyValueObservingOptionNew
                        context:nil];
     
@@ -71,71 +68,63 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     double balance = [self.mediator balanceForCurrencyWithId:self.currency.currencyId];
-    self.currencyAmmountLabel.text = [NumberFormatter stringFromDouble:balance];
+    self.currencyAmmountLabel.text = [RVTNumberFormatter stringFromDouble:balance];
     [self updateRateLabel];
 }
 
 -(void)updateRateLabel {
-    Currency *currencyTo = self.mediator.currencyTo;
-    NSString *rate = [NumberFormatter stringFromDouble: [currencyTo rateForCurrencyWithId:self.currency.currencyId]];
+    RVTCurrency *currencyFrom = self.mediator.currencyFrom;
+    NSString *rate = [RVTNumberFormatter stringFromDouble: [currencyFrom rateForCurrencyWithId:self.currency.currencyId]];
     self.currencyRateLabel.text = [NSString stringWithFormat:@"%@1 = %@%@",
                                    self.currency.symbol,
-                                   currencyTo.symbol,
+                                   currencyFrom.symbol,
                                    rate];
-}
-
--(void)didEditTextField: (UITextField *)textField {
-    [self.mediator exchangeCurrencyWithAmmount:[textField.text doubleValue]];
-}
-
-// MARK: - UITextFieldDelegate
-
--(void)textFieldDidEndEditing:(UITextField *)textField {
-    [textField becomeFirstResponder];
-}
-
-// MARK: - CurrencyViewController
-
--(Currency *)currentCurrency {
-    return self.currency;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object change:(NSDictionary *)change
                        context:(void *)context {
     
-    if ([keyPath isEqualToString:@"currencyTo"]) {
-        Currency *currencyTo = change[@"new"];
-        NSString *rate = [NumberFormatter stringFromDouble: [currencyTo rateForCurrencyWithId:self.currency.currencyId]];
-        self.currencyRateLabel.text = [NSString stringWithFormat:@"%@1 = %@%@",
-                                       self.currency.symbol,
-                                       currencyTo.symbol,
-                                       rate];
+    if ([keyPath isEqualToString:@"exchangedAmount"]) {
+        NSNumber *amount = change[@"new"];
+        NSString *amounString = [RVTNumberFormatter stringFromDouble:[amount doubleValue]];
+        self.exchangedAmmountLabel.text = amounString;
     }
     
-    if ([keyPath isEqualToString:@"exchangeIsPossible"]) {
-        NSNumber *isPossible = change[@"new"];
-        self.currencyAmmountLabel.textColor = [isPossible boolValue] ? [UIColor whiteColor] : [UIColor redColor];
+    if ([keyPath isEqualToString:@"currencyFrom"]) {
+        RVTCurrency *currencyFrom = change[@"new"];
+        NSString *rate = [RVTNumberFormatter stringFromDouble: [currencyFrom rateForCurrencyWithId:self.currency.currencyId]];
+        self.currencyRateLabel.text = [NSString stringWithFormat:@"%@1 = %@%@",
+                                       self.currency.symbol,
+                                       currencyFrom.symbol,
+                                       rate];
     }
     
     if ([keyPath isEqualToString:@"gbpBalance"] && [self.currency.currencyId isEqualToString:@"GBP"]) {
         NSNumber *newAmount = change[@"new"];
-        self.currencyAmmountLabel.text = [NumberFormatter stringFromDouble: [newAmount doubleValue]];
+        self.currencyAmmountLabel.text = [RVTNumberFormatter stringFromDouble: [newAmount doubleValue]];
     }
     
     if ([keyPath isEqualToString:@"usdBalance"] && [self.currency.currencyId isEqualToString:@"USD"]) {
         NSNumber *newAmount = change[@"new"];
-        self.currencyAmmountLabel.text = [NumberFormatter stringFromDouble: [newAmount doubleValue]];
+        self.currencyAmmountLabel.text = [RVTNumberFormatter stringFromDouble: [newAmount doubleValue]];
     }
     
     if ([keyPath isEqualToString:@"eurBalance"] && [self.currency.currencyId isEqualToString:@"EUR"]) {
         NSNumber *newAmount = change[@"new"];
-        self.currencyAmmountLabel.text = [NumberFormatter stringFromDouble: [newAmount doubleValue]];
+        self.currencyAmmountLabel.text = [RVTNumberFormatter stringFromDouble: [newAmount doubleValue]];
     }
     
     if ([keyPath isEqualToString:@"lastUpdateTimestamp"]) {
         [self updateRateLabel];
     }
+}
+
+
+// MARK: - CurrencyViewController
+
+-(RVTCurrency *)currentCurrency {
+    return self.currency;
 }
 
 @end

@@ -1,27 +1,27 @@
 //
-//  CurrencyFromPageViewController.m
+//  RVTCurrencyFromPageViewController.m
 //  RevolutTest
 //
 //  Created by Nikita Timonin on 16/08/2017.
 //  Copyright © 2017 Timonin. All rights reserved.
 //
 
-#import "CurrencyFromPageViewController.h"
-#import "CurrencyFromViewController.h"
+#import "RVTCurrencyFromPageViewController.h"
+#import "RVTCurrencyFromViewController.h"
 
-@interface CurrencyFromPageViewController ()
+@interface RVTCurrencyFromPageViewController ()
 
 @end
 
-@implementation CurrencyFromPageViewController
+@implementation RVTCurrencyFromPageViewController
 
 -(void)viewDidLoad {
     [super viewDidLoad];
     
     NSMutableArray *arr = [NSMutableArray new];
     
-    for (Currency *currency in self.mediator.currencies) {
-        CurrencyFromViewController *controller = [[CurrencyFromViewController alloc] initWithCurrency:currency mediator: self.mediator];
+    for (RVTCurrency *currency in self.mediator.currencies) {
+        RVTCurrencyFromViewController *controller = [[RVTCurrencyFromViewController alloc] initWithCurrency:currency mediator: self.mediator];
         [arr addObject:controller];
     }
     
@@ -40,8 +40,8 @@
     
     if (completed) {
         self.mediator.currencyFrom = self.currentController.currency;
-        CurrencyFromViewController *previousController = (CurrencyFromViewController *)previousViewControllers.firstObject;
-        CurrencyFromViewController *currentController = (CurrencyFromViewController *)self.currentController;
+        RVTCurrencyFromViewController *previousController = (RVTCurrencyFromViewController *)previousViewControllers.firstObject;
+        RVTCurrencyFromViewController *currentController = (RVTCurrencyFromViewController *)self.currentController;
         currentController.textField.text = previousController.textField.text;
         previousController.textField.text = nil;
         [currentController.textField performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0];

@@ -1,14 +1,14 @@
 //
-//  NumberFormatter.m
+//  RVTNumberFormatter.m
 //  RevolutTest
 //
 //  Created by Nikita Timonin on 17/08/2017.
 //  Copyright © 2017 Timonin. All rights reserved.
 //
 
-#import "NumberFormatter.h"
+#import "RVTNumberFormatter.h"
 
-@implementation NumberFormatter
+@implementation RVTNumberFormatter
 
 +(NSString *)stringFromDouble: (double) doubleValue {
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];

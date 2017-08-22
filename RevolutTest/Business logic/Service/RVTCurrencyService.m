@@ -1,16 +1,16 @@
 //
-//  CurrencyService.m
+//  RVTCurrencyService.m
 //  RevolutTest
 //
 //  Created by Nikita Timonin on 12/08/2017.
 //  Copyright © 2017 Timonin. All rights reserved.
 //
 
-#import "CurrencyService.h"
-#import "AppSettingsService.h"
+#import "RVTCurrencyService.h"
+#import "RVTAppSettingsService.h"
 
 
-@interface CurrencyService () <NSXMLParserDelegate>
+@interface RVTCurrencyService () <NSXMLParserDelegate>
 
 @property (strong, nonatomic) NSXMLParser *xmlParser;
 @property (nonatomic) double lastUpdateTimestamp;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation CurrencyService
+@implementation RVTCurrencyService
 
 static NSString *rate = @"rate";
 static NSString *ecbRates = @"http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
@@ -107,25 +107,25 @@ qualifiedName:(NSString *)qName
         double lastUpdateTimestamp = [[NSDate date] timeIntervalSince1970];
         double gbpToUsdRate = self.eurToUsdRate / self.eurToGbpRate;
         
-        Currency *usd = [[Currency alloc] initWith:@"USD"
-                                         toEURRate:1/self.eurToUsdRate
-                                         toUSDRate:1.0
-                                         toGBPRate:1/gbpToUsdRate
-                               lastUpdateTimestamp:lastUpdateTimestamp];
+        RVTCurrency *usd = [[RVTCurrency alloc] initWith:@"USD"
+                                               toEURRate:1/self.eurToUsdRate
+                                               toUSDRate:1.0
+                                               toGBPRate:1/gbpToUsdRate
+                                     lastUpdateTimestamp:lastUpdateTimestamp];
         
-        Currency *gbp = [[Currency alloc] initWith:@"GBP"
-                                         toEURRate:1/self.eurToGbpRate
-                                         toUSDRate:gbpToUsdRate
-                                         toGBPRate:1.0
-                               lastUpdateTimestamp:lastUpdateTimestamp];
+        RVTCurrency *gbp = [[RVTCurrency alloc] initWith:@"GBP"
+                                               toEURRate:1/self.eurToGbpRate
+                                               toUSDRate:gbpToUsdRate
+                                               toGBPRate:1.0
+                                     lastUpdateTimestamp:lastUpdateTimestamp];
         
-        Currency *eur = [[Currency alloc] initWith:@"EUR"
-                                         toEURRate:1.0
-                                         toUSDRate:self.eurToUsdRate
-                                         toGBPRate:self.eurToGbpRate
-                               lastUpdateTimestamp:lastUpdateTimestamp];
+        RVTCurrency *eur = [[RVTCurrency alloc] initWith:@"EUR"
+                                               toEURRate:1.0
+                                               toUSDRate:self.eurToUsdRate
+                                               toGBPRate:self.eurToGbpRate
+                                     lastUpdateTimestamp:lastUpdateTimestamp];
         
-        NSArray * arr = @[usd, gbp, eur];
+        NSArray *arr = @[usd, gbp, eur];
         
         self.eurToUsdRate = 0;
         self.eurToGbpRate = 0;

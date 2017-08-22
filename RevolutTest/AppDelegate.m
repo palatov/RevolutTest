@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "AppSettingsService.h"
+#import "RVTAppSettingsService.h"
 
 @interface AppDelegate ()
 
@@ -23,7 +23,9 @@
      GBP: 100
      USD: 100
     */
-    [AppSettingsService setupInitialCurrencyBalance];
+    
+    // TODO: - добавить здесь проверку на первый запуск
+    [RVTAppSettingsService setupInitialCurrencyBalance];
     return YES;
 }
 

@@ -1,5 +1,5 @@
 //
-//  CurrencyExchangeViewController.h
+//  RVTCurrencyExchangeViewController.h
 //  RevolutTest
 //
 //  Created by Nikita Timonin on 13/08/2017.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CurrencyExchangeViewController : UIViewController
+@interface RVTCurrencyExchangeViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIView *firstContainerView;
 @property (weak, nonatomic) IBOutlet UIView *secondContainerView;

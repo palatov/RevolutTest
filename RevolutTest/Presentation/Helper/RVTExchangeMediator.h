@@ -1,5 +1,5 @@
 //
-//  ExchangeMediator.h
+//  RVTExchangeMediator.h
 //  RevolutTest
 //
 //  Created by Nikita Timonin on 16/08/2017.
@@ -7,21 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Currency.h"
+#import "RVTCurrency.h"
 
-@interface ExchangeMediator : NSObject
+@interface RVTExchangeMediator : NSObject
 
-@property (strong, readonly, nonatomic) NSArray<Currency *> *currencies;
+@property (strong, readonly, nonatomic) NSArray<RVTCurrency *> *currencies;
 
-@property (strong, nonatomic) Currency *currencyFrom;
-@property (strong ,nonatomic) Currency *currencyTo;
+@property (strong, nonatomic) RVTCurrency *currencyFrom;
+@property (strong ,nonatomic) RVTCurrency *currencyTo;
 @property (nonatomic) double exchangedAmount;
 @property (nonatomic) BOOL exchangeIsPossible; 
 
 // Cчитает деньги
 
--(instancetype)initWithCurrencies: (NSArray<Currency *> *)currencies;
--(void)updateCurrencies: (NSArray<Currency *> *)currencies;
+-(instancetype)initWithCurrencies: (NSArray<RVTCurrency *> *)currencies;
+-(void)updateCurrencies: (NSArray<RVTCurrency *> *)currencies;
 -(void)saveExchangeResult;
 -(void)exchangeCurrencyWithAmmount:(double) amount;
 -(double) balanceForCurrencyWithId: (NSString *)currencyID;

@@ -1,35 +1,35 @@
 //
-//  CurrencyExchangeViewController.m
+//  RVTCurrencyExchangeViewController.m
 //  RevolutTest
 //
 //  Created by Nikita Timonin on 13/08/2017.
 //  Copyright © 2017 Timonin. All rights reserved.
 //
 
-#import "CurrencyExchangeViewController.h"
-#import "CurrencyFromPageViewController.h"
-#import "CurrencyToPageViewController.h"
-#import "Currency.h"
-#import "CurrencyService.h"
-#import "CurrencyFromViewController.h"
+#import "RVTCurrencyExchangeViewController.h"
+#import "RVTCurrencyFromPageViewController.h"
+#import "RVTCurrencyToPageViewController.h"
+#import "RVTCurrency.h"
+#import "RVTCurrencyService.h"
+#import "RVTCurrencyFromViewController.h"
 
-@interface CurrencyExchangeViewController () 
+@interface RVTCurrencyExchangeViewController ()
 
-@property (strong, nonatomic) CurrencyService *currencyService;
-@property (strong, nonatomic) CurrencyFromPageViewController *currencyFromPageViewController;
-@property (strong, nonatomic) CurrencyToPageViewController *currencyToPageViewController;
-@property (strong, nonatomic) ExchangeMediator *mediator;
+@property (strong, nonatomic) RVTCurrencyService *currencyService;
+@property (strong, nonatomic) RVTCurrencyFromPageViewController *currencyFromPageViewController;
+@property (strong, nonatomic) RVTCurrencyToPageViewController *currencyToPageViewController;
+@property (strong, nonatomic) RVTExchangeMediator *mediator;
 
 @end
 
 /// Держать модели здесь
 
-@implementation CurrencyExchangeViewController
+@implementation RVTCurrencyExchangeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.currencyService = [[CurrencyService alloc] initWithCompletionBlock:^(NSArray<Currency *> *currencies) {
+    self.currencyService = [[RVTCurrencyService alloc] initWithCompletionBlock:^(NSArray<RVTCurrency *> *currencies) {
         [self setupExchangeMediator:currencies];
         [self.navigationItem.rightBarButtonItem setEnabled: TRUE];
     } errorHandler:^(NSError *error) {
@@ -67,10 +67,10 @@
     [self presentViewController:alert animated:TRUE completion:nil];
 }
 
--(void)setupExchangeMediator: (NSArray<Currency *> *) currencies {
+-(void)setupExchangeMediator: (NSArray<RVTCurrency *> *) currencies {
     // TODO: - позже можно заменить его на протокол
     if (!self.mediator) {
-        self.mediator = [[ExchangeMediator alloc] initWithCurrencies:currencies];
+        self.mediator = [[RVTExchangeMediator alloc] initWithCurrencies:currencies];
         [self.mediator addObserver:self forKeyPath:@"exchangeIsPossible" options:NSKeyValueObservingOptionNew context:nil];
     } else {
         [self.mediator updateCurrencies:currencies];
@@ -82,17 +82,17 @@
 }
 
 -(void)setupPageViewControllers {
-    self.currencyFromPageViewController = [[CurrencyFromPageViewController alloc] initWithMediator: self.mediator];
+    self.currencyFromPageViewController = [[RVTCurrencyFromPageViewController alloc] initWithMediator: self.mediator];
     
     [self addPageViewController:self.currencyFromPageViewController
                 toContainerView:self.firstContainerView];
     
-    self.currencyToPageViewController = [[CurrencyToPageViewController alloc] initWithMediator: self.mediator];
+    self.currencyToPageViewController = [[RVTCurrencyToPageViewController alloc] initWithMediator: self.mediator];
     
     [self addPageViewController:self.currencyToPageViewController
                 toContainerView:self.secondContainerView];
     
-    CurrencyFromViewController * initialController = (CurrencyFromViewController *)self.currencyFromPageViewController.viewControllers.firstObject;
+    RVTCurrencyFromViewController * initialController = (RVTCurrencyFromViewController *)self.currencyFromPageViewController.viewControllers.firstObject;
     [initialController.textField becomeFirstResponder];
 }
 

@@ -6,22 +6,22 @@
 //  Copyright © 2017 Timonin. All rights reserved.
 //
 
-#import "CurrencyToPageViewController.h"
-#import "CurrencyToViewController.h"
+#import "RVTCurrencyToPageViewController.h"
+#import "RVTCurrencyToViewController.h"
 
-@interface CurrencyToPageViewController ()
+@interface RVTCurrencyToPageViewController ()
 
 @end
 
-@implementation CurrencyToPageViewController
+@implementation RVTCurrencyToPageViewController
 
 -(void)viewDidLoad {
     [super viewDidLoad];
     
     NSMutableArray *arr = [NSMutableArray new];
     
-    for (Currency *currency in self.mediator.currencies) {
-        CurrencyToViewController *controller = [[CurrencyToViewController alloc] initWithCurrency:currency mediator: self.mediator];
+    for (RVTCurrency *currency in self.mediator.currencies) {
+        RVTCurrencyToViewController *controller = [[RVTCurrencyToViewController alloc] initWithCurrency:currency mediator: self.mediator];
         [arr addObject:controller];
     }
     
